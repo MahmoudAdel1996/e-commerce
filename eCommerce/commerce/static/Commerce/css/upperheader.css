@@ -1,0 +1,13 @@
+.upper-header form .search-bar{
+    box-shadow: none;
+    border-color: var(--main-bg-color);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.upper-header form .search-btn{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: #fafafa;
+    color: var(--main-bg-color);
+}

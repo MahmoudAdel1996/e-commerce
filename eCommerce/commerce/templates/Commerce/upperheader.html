@@ -1,0 +1,14 @@
+<div class="upper-header sticky-top bg-primary p-2">
+    <div class="row justify-content-between">
+        <div class="col-8">
+            <form action="{% url 'search' %}" class="form-inline">
+                <input class="form-control search-bar" name="search" value="{{request.GET.search}}" type="search" placeholder="Search">
+                <button class="btn btn-default search-btn" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+        <div class="col-4 text-right">
+            <a class="btn text-light" href="{% url 'register' %}"><i class="fas fa-user-plus"></i> Register</a>
+            <a class="btn text-light" href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+body{
+    background-image: url(../image/bg2.jpg);
+    background-size: cover
+}
+.box{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 800px;
+    background-color: rgba(228, 226, 226, 0.8);
+    border-radius: 5px;
+    padding-bottom: 25px;
+    box-shadow: 0 0 1px 1px #333;
+    overflow: hidden;
+}
+.box header{
+    background-color: #5AB0E7;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 1px #888
+}
+.box header h2{
+    padding: 5px;
+    text-align: center;
+    font-family: monospace;
+    color: #444
+}
+.box header h2 i{
+    font-size: 22px;
+}
+.box main .row{
+    margin: 0;
+}
+
+.box main .row img{
+    border: 1px solid #777;
+    box-shadow: 0 0 2px 2px#888;
+    margin-left: 10px
+}
+.box main section{
+    margin-left: 20px
+}
+.box main section h1{
+    color: #444;
+}

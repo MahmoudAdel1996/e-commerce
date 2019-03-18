@@ -1,0 +1,45 @@
+<!DOCTYPE html>{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'Commerce/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Commerce/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Commerce/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'Commerce/css/signup.css' %}">
+
+</head>
+<body>
+    {% include "commerce/navbar.html" %}
+    <div class="box">
+        <h2>Register</h2>
+        <form action="">
+            <div class="inputBox">
+                <input type="text" name="" required="">
+                <label>Username</label>
+            </div>
+            <div class="inputBox">
+                <input type="email" name="" required="">
+                <label>E-mail</label>
+            </div>
+            <div class="inputBox">
+                <input type="password" name="" required="">
+                <label>Password</label>
+            </div>
+            <div class="inputBox">
+                <input type="password" name="" required="">
+                <label>Re-Password</label>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Sign Up">
+        </form>
+        <br>
+        <a href="{% url 'login' %}">I Already have an account</a>
+    </div>
+
+    <script src="{% static 'Commerce/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'Commerce/js/signup.js' %}"></script>
+    <script src="{% static 'Commerce/js/navbar.js' %}"></script>
+</body>
+</html>

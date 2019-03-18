@@ -1,0 +1,18 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'commerce/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'commerce/css/404.css' %}">
+    <title>Page Not Found|404</title>
+</head>
+<body>
+    <div class="error-page">
+        <div>
+            <h1 data-h1="404">404</h1>
+            <p data-p="NOT FOUND">NOT FOUND</p>
+            <a class="btn btn-dark" href="{% url 'home' %}">Home</a>
+        </div>
+    </div>
+</body>
+</html>

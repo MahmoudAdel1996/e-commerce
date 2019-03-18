@@ -1,0 +1,63 @@
+:root {
+  --main-bg-color: #006fcc;
+}
+body{
+  background-color:#fafafa
+}
+.row{
+  margin: 0;
+}
+
+.main-section{
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 0px 20px;
+  max-width: 1200px;
+  box-shadow: 0 2px 5px rgba(0,0,0,.3);
+  border: none
+}
+
+aside,
+main{
+    padding: 40px 30px;
+    box-sizing: border-box;
+}
+
+.items,
+aside .card{
+box-shadow: 0 2px 5px rgba(0,0,0,.3);
+border: none
+}
+
+aside h3{
+  color: var(--main-bg-color);
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+}
+
+.btn-primary,
+.bg-primary{
+  background-color: var(--main-bg-color) !important;
+  border: 1px solid var(--main-bg-color);
+}
+.btn-primary:hover{
+    background-color: #777;
+    border-color: #777
+}
+.card-text{
+    color: #777;
+}
+
+footer{
+  margin-top: 50px;
+  background-color: var(--main-bg-color);
+  padding: 5px;
+  color: #fff;
+}
+
+@media(max-width: 577px){
+    .upper-header form .search-bar{
+        max-width: 10rem;
+    }
+}
