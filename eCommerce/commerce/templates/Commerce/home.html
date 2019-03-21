@@ -39,7 +39,10 @@
               <!--start number page-->
               <div class="pagination p-4">
                   <span class="step-links m-auto">
-                    {% if products.has_previous %}
+                    {% if products.has_previous and request.GET.search %}
+                        <a class="card-link" href="?search={{ request.GET.search }}&page=1">&laquo; first</a>
+                        <a class="btn btn-secondary p-1 m-2" href="?search={{ request.GET.search }}&page={{ products.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
+                    {% elif products.has_previous %}
                         <a class="card-link" href="?page=1">&laquo; first</a>
                         <a class="btn btn-secondary p-1 m-2" href="?page={{ products.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
                     {% endif %}
@@ -47,8 +50,10 @@
                     <span class="current">
                         Page {{ products.number }} of {{ products.paginator.num_pages }}
                     </span>
-
-                    {% if products.has_next %}
+                    {% if products.has_next and request.GET.search %}
+                        <a class="btn btn-secondary p-1 m-2" href="?search={{ request.GET.search }}&page={{ products.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
+                        <a class="card-link" href="?search={{ request.GET.search }}&page={{ products.paginator.num_pages }}">last &raquo;</a>
+                    {% elif products.has_next %}
                         <a class="btn btn-secondary p-1 m-2" href="?page={{ products.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
                         <a class="card-link" href="?page={{ products.paginator.num_pages }}">last &raquo;</a>
                     {% endif %}
@@ -76,7 +81,10 @@
               <!--start number page-->
               <div class="pagination p-4">
                   <span class="step-links m-auto">
-                    {% if products.has_previous %}
+                    {% if products.has_previous and request.GET.search %}
+                        <a class="card-link" href="?search={{ request.GET.search }}&page=1">&laquo; first</a>
+                        <a class="btn btn-secondary p-1 m-2" href="?search={{ request.GET.search }}&page={{ products.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
+                    {% elif products.has_previous %}
                         <a class="card-link" href="?page=1">&laquo; first</a>
                         <a class="btn btn-secondary p-1 m-2" href="?page={{ products.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
                     {% endif %}
@@ -84,8 +92,10 @@
                     <span class="current">
                         Page {{ products.number }} of {{ products.paginator.num_pages }}
                     </span>
-
-                    {% if products.has_next %}
+                    {% if products.has_next and request.GET.search %}
+                        <a class="btn btn-secondary p-1 m-2" href="?search={{ request.GET.search }}&page={{ products.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
+                        <a class="card-link" href="?search={{ request.GET.search }}&page={{ products.paginator.num_pages }}">last &raquo;</a>
+                    {% elif products.has_next %}
                         <a class="btn btn-secondary p-1 m-2" href="?page={{ products.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
                         <a class="card-link" href="?page={{ products.paginator.num_pages }}">last &raquo;</a>
                     {% endif %}
@@ -108,6 +118,7 @@
 
     <script src="{% static 'Commerce/js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'Commerce/js/jquery.nicescroll.min.js' %}"></script>
+    <script src="{% static 'Commerce/js/scroll.js' %}"></script>
     <script src="{% static 'Commerce/js/home.js' %}"></script>
     <script src="{% static 'Commerce/js/navbar.js' %}"></script>
 </body>

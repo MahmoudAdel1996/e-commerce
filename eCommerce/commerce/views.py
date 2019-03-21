@@ -45,8 +45,7 @@ def search(request):
     categories = Category.objects.all()
     search_name = request.GET.get("search")
     pro = Products.objects.all()
-    if search_name:
-        items = pro.filter(name__icontains=search_name)
+    items = pro.filter(name__icontains=search_name)
     paginator = Paginator(items, 51)
     page = request.GET.get('page')
     products = paginator.get_page(page)
