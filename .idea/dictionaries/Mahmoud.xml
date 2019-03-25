@@ -6,6 +6,7 @@
       <w>cursorborderradius</w>
       <w>cursorcolor</w>
       <w>cursorwidth</w>
+      <w>datatype</w>
       <w>elif</w>
       <w>endfor</w>
       <w>errorpage</w>

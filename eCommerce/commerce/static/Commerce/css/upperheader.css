@@ -1,3 +1,10 @@
+.row{
+    margin: 0
+}
+*{
+    box-sizing: border-box;
+}
+
 .upper-header form .search-bar{
     box-shadow: none;
     border-color: var(--main-bg-color);

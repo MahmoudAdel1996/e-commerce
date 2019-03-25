@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
     <link rel="stylesheet" href="{% static 'Commerce/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'Commerce/css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'Commerce/css/navbar.css' %}">
@@ -61,21 +62,26 @@
               </div>
               <!--end number_page-->
               <div class="row justify-content-center">
+                {% if products.paginator.count > 0 %}
+                    {% for product in products %}
 
-                {% for product in products %}
-
-                <div class="col-xs-12 col-md-6 col-lg-4 card" style="width: 18rem;"><br>
-                    <img class="card-img-top" src="{{product.image.url}}" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">{{ product.name|truncatechars:60 }}</h5>
-                      <p class="card-text">{{ product.description|truncatechars:100 }}</p>
-                    </div>
-                    <div class="text-center">
-                        <h3>${{ product.price }}</h3>
-                        <a href="#" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Add To Cart</a>
-                    </div><br>
-                </div>
-                {% endfor %}
+                    <form class="col-xs-12 col-md-6 col-lg-4 card" style="width: 18rem;"><br>
+                        <img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}">
+                        <div class="card-body">
+                          <h5 class="card-title"><a class="card-link" href="{% url 'single_product' product.id %}">{{ product.name|truncatechars:60 }}</a></h5>
+                          <p class="card-text">{{ product.description|truncatechars:100 }}</p>
+                        </div>
+                        <div class="text-center">
+                            <h3>${{ product.price }}</h3>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Add To Cart</button>
+                        </div><br>
+                    </form>
+                    {% endfor %}
+                {% else %}
+                  <br>
+                    <h1 class="text-secondary">No Items Here</h1>
+                  <br>
+                {% endif %}
 
               </div>
               <!--start number page-->
@@ -117,6 +123,8 @@
     </footer>
 
     <script src="{% static 'Commerce/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'Commerce/js/popper.min.js' %}"></script>
+    <script src="{% static 'Commerce/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'Commerce/js/jquery.nicescroll.min.js' %}"></script>
     <script src="{% static 'Commerce/js/scroll.js' %}"></script>
     <script src="{% static 'Commerce/js/home.js' %}"></script>

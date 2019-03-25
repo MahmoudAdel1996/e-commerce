@@ -7,10 +7,10 @@ class Users(models.Model):
     name = models.CharField(max_length=100)
     password = models.CharField(max_length=128)
     email = models.CharField(max_length=100)
-    gender = models.CharField(max_length=50)
-    age = models.IntegerField()
-    phone = models.CharField(max_length=15)
-    country = models.CharField(max_length=100)
+    gender = models.CharField(max_length=50, null=True)
+    age = models.IntegerField(null=True)
+    phone = models.CharField(max_length=15, null=True)
+    country = models.CharField(max_length=100, null=True)
 
     class Meta:
         verbose_name_plural = "Users"
@@ -57,3 +57,14 @@ class Invoices(models.Model):
 
     def __str__(self):
         return self.status + " | " + str(self.date_time.strftime('%Y-%m-%d %I:%M %p'))
+
+
+class Cart(models.Model):
+    product = models.ForeignKey('Products', on_delete=models.CASCADE)
+    user = models.ForeignKey('Users', on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = "Cart"
+
+    def __str__(self):
+        return self.user.name + " => " + self.product.name

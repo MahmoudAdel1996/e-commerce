@@ -22,9 +22,7 @@ header{
     float: left;
     font-weight: 700;
 }
-.logo span{
-  color: #999
-}
+
 .logo:hover{
   color: #ccc
 }

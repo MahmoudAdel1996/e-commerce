@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
     <link rel="stylesheet" href="{% static 'Commerce/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'Commerce/css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'Commerce/css/navbar.css' %}">
@@ -15,22 +16,50 @@
     {% include "commerce/navbar.html" %}
     <div class="box">
         <h2>Register</h2>
-        <form action="">
+        <form action="{% url 'register' %}" method="post">{% csrf_token %}
             <div class="inputBox">
-                <input type="text" name="" required="">
+                <input type="text" name="username" value="{{request.POST.username}}" required="">
                 <label>Username</label>
             </div>
+            {% if error %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              {{error}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endif %}
             <div class="inputBox">
-                <input type="email" name="" required="">
+                <input type="email" name="email" value="{{request.POST.email}}" required="">
                 <label>E-mail</label>
             </div>
+            {% if error1 %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              {{error1}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endif %}
             <div class="inputBox">
-                <input type="password" name="" required="">
+                <input type="password" name="password1" value="{{request.POST.password1}}" required="">
                 <label>Password</label>
             </div>
             <div class="inputBox">
-                <input type="password" name="" required="">
+                <input type="password" name="password2" value="{{request.POST.password2}}" required="">
                 <label>Re-Password</label>
+            </div>
+            {% if error2 %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              {{error2}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endif %}
+            <div class="inputBox">
+                <input type="number" name="age" value="{{request.POST.age}}" required="">
+                <label>Age</label>
             </div>
             <input class="btn btn-primary" type="submit" value="Sign Up">
         </form>
@@ -39,6 +68,8 @@
     </div>
 
     <script src="{% static 'Commerce/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'Commerce/js/popper.min.js' %}"></script>
+    <script src="{% static 'Commerce/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'Commerce/js/jquery.nicescroll.min.js' %}"></script>
     <script src="{% static 'Commerce/js/scroll.js' %}"></script>
     <script src="{% static 'Commerce/js/signup.js' %}"></script>

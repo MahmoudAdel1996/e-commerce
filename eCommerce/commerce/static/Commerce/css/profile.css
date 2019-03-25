@@ -1,6 +1,5 @@
 body{
-    background-image: url(../image/bg2.jpg);
-    background-size: cover
+    background-color: fafafa
 }
 .box{
     position: absolute;

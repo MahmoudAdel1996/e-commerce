@@ -1,4 +1,5 @@
 $( document ).ready(function(){
+
     $("body").niceScroll({
       cursorcolor:"#006fcc",
       cursorwidth:"8px",

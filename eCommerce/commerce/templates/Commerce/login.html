@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
     <link rel="stylesheet" href="{% static 'Commerce/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'Commerce/css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'Commerce/css/navbar.css' %}">
@@ -14,13 +15,21 @@
 {% include "commerce/navbar.html" %}
     <div class="box">
         <h2>Login</h2>
-        <form action="">
+        <form action="{% url 'login' %}" method="post">{% csrf_token %}
             <div class="inputBox">
-                <input type="text" name="" required="">
+                <input type="text" name="username" required="">
                 <label>Username</label>
             </div>
+            {% if error %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              {{error}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endif %}
             <div class="inputBox">
-                <input type="password" name="" required="">
+                <input type="password" name="password" required="">
                 <label>Password</label>
             </div>
             <input class="btn btn-primary" type="submit" value="Sign In">
@@ -30,6 +39,7 @@
     </div>
 
     <script src="{% static 'Commerce/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'Commerce/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'Commerce/js/jquery.nicescroll.min.js' %}"></script>
     <script src="{% static 'Commerce/js/scroll.js' %}"></script>
     <script src="{% static 'Commerce/js/login.js' %}"></script>

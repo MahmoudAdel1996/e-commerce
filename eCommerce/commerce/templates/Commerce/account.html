@@ -1,0 +1,67 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'Commerce/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Commerce/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Commerce/css/upperheader.css' %}">
+    <link rel="stylesheet" href="{% static 'Commerce/css/navbar.css' %}">
+</head>
+<body>
+    {% include "commerce/upperheader.html" %}
+    {% include "commerce/navbar.html" %}
+
+    <div class="container">
+        <form method="post">{% csrf_token %}
+          <div class="form-group">
+            <label>User Name</label>
+            <input name="username" value="{{login.name}}" type="text" class="form-control" disabled placeholder="User Name">
+          </div>
+          <div class="form-group">
+            <label>Email address</label>
+            <input name="email" value="{{login.email}}" type="email" class="form-control" disabled placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input name="password" value="{{login.password}}" type="password" class="form-control" placeholder="Password">
+          </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <select name="gender" class="form-control">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="None">None</option>
+                </select>
+            </div>
+          <div class="form-group">
+            <label>Age</label>
+            <input name="age" value="{{login.age}}" type="number" class="form-control" placeholder="age">
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input name="phone" value="{{login.phone}}" type="text" class="form-control" placeholder="phone">
+          </div>
+          <div class="form-group">
+            <label>Country</label>
+            <input name="country" value="{{login.country}}" type="text" class="form-control" placeholder="country">
+          </div>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+
+    <script src="{% static 'Commerce/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'Commerce/js/popper.min.js' %}"></script>
+    <script src="{% static 'Commerce/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'Commerce/js/jquery.nicescroll.min.js' %}"></script>
+    <script src="{% static 'Commerce/js/scroll.js' %}"></script>
+    <script src="{% static 'Commerce/js/navbar.js' %}"></script>
+
+    <script>
+        $('option[value="{{login.gender}}"]').attr('selected','True');
+    </script>
+</body>
+</html>
