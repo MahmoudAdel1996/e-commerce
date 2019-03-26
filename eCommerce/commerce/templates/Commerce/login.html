@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{% static 'Commerce/css/login.css' %}">
 </head>
 <body>
-{% include "commerce/navbar.html" %}
+{% include "Commerce/navbar.html" %}
     <div class="box">
         <h2>Login</h2>
         <form action="{% url 'login' %}" method="post">{% csrf_token %}
