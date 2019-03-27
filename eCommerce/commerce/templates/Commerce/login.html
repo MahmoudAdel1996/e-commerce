@@ -1,5 +1,5 @@
 <!DOCTYPE html>{% load static %}
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,8 +17,8 @@
         <h2>Login</h2>
         <form action="{% url 'login' %}" method="post">{% csrf_token %}
             <div class="inputBox">
-                <input type="text" name="username" required="">
-                <label>Username</label>
+                <input id="username" type="text" name="username" required="">
+                <label for="username">Username</label>
             </div>
             {% if error %}
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -29,8 +29,8 @@
             </div>
             {% endif %}
             <div class="inputBox">
-                <input type="password" name="password" required="">
-                <label>Password</label>
+                <input id="password" type="password" name="password" required="">
+                <label for="password">Password</label>
             </div>
             <input class="btn btn-primary" type="submit" value="Sign In">
         </form>

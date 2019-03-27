@@ -1,9 +1,9 @@
 <!DOCTYPE html>{% load static %}
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Profile | {{login.name}}</title>
+    <title>Profile | {{other_user.name}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
     <link rel="stylesheet" href="{% static 'Commerce/css/bootstrap.min.css' %}">
@@ -17,22 +17,60 @@
     {% include "Commerce/upperheader.html" %}
     {% include "Commerce/navbar.html" %}
 
-    <div class="box">
-        <header>
-            <div class="container">
-                <h2><i class="fas fa-user"></i> {{login.name}}</h2>
+    <div class="container">
+        <div class="box m-auto">
+            <header class="mb-4">
+                <div class="text-center">
+                    <h2><i class="fas fa-user"></i> {{other_user.name}}</h2>
+                </div>
+            </header>
+            <main>
+                <div class="row justify-content-around">
+                    {% if login.gender == "Female" %}
+                        <img class="img-thumbnail col-4" src="{% static 'Commerce/image/female_icon.png' %}" alt="python creator">
+                    {% else %}
+                        <img class="img-thumbnail col-4" src="{% static 'Commerce/image/User-icon.png' %}" alt="python creator">
+                    {% endif %}
+                    <section class="col-7">
+                        <h1 class="text-secondary mb-3">About</h1>
+                        <p><b><i class="fas fa-signature"></i> Name: </b> {{ other_user.name }}</p>
+                        <p><b><i class="fas fa-envelope-open"></i> E-mail: </b> {{ other_user.email }}</p>
+                        <p><b><i class="fas fa-user-clock"></i> Age: </b> {{ other_user.age }}</p>
+                        <p><b><i class="fas fa-venus-mars"></i> Gender: </b> {{ other_user.gender }}</p>
+                        <p><b><i class="fas fa-phone"></i> Phone: </b> {{ other_user.phone }}</p>
+                    </section>
+                </div>
+            </main>
+            <br><hr>
+            <div class="history">
+                <div class="container">
+                    <h3 class="text-secondary p-4">{{ other_user.name }} History</h3>
+                    {% if products %}
+                        {% for product in products %}
+                            <div class="card mb-3 p-2">
+                              <div class="row no-gutters">
+                                <div class="col-md-3">
+                                  <img src="{{ product.product.image.url }}" class="card-img" alt="{{ product.product.name }}">
+                                </div>
+                                <div class="col-md-9">
+                                  <div class="card-body">
+                                    <h5 class="card-title"><a class="card-link" href="{% url 'single_product' product.product.id %}">{{ product.product.name }}</a></h5>
+                                    <p class="text-info">Quantity: {{ product.product_quantity }}</p>
+                                    <p class="text-danger">${{ product.product.price }}</p>
+                                    <p class="card-text"><small class="text-muted">{{ product.date_time }}</small></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-center p-2 text-secondary">{{ other_user.name }} doesn't have any history</p>
+                    {% endif %}
+                </div>
             </div>
-        </header>
-        <main>
-            <div class="row">
-                <img class="img-thumbnail col-5" src="{% static 'Commerce/image/User-icon.png' %}" alt="python creator">
-                <section class="col-5">
-                    <h1>Description here</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis quis animi quidem molestiae voluptas atque beatae hic quae, illum, incidunt natus exercitationem magnam dolores harum nostrum sit consequuntur vel sed.</p>
-                </section>
-            </div>    
-        </main>
+        </div>
     </div>
+
     <script src="{% static 'Commerce/js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'Commerce/js/popper.min.js' %}"></script>
     <script src="{% static 'Commerce/js/bootstrap.min.js' %}"></script>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>{% load static %}
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,8 +18,8 @@
         <h2>Register</h2>
         <form action="{% url 'register' %}" method="post">{% csrf_token %}
             <div class="inputBox">
-                <input type="text" name="username" value="{{request.POST.username}}" required="">
-                <label>Username</label>
+                <input id="username" type="text" name="username" value="{{request.POST.username}}" required="">
+                <label for="username">Username</label>
             </div>
             {% if error %}
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -30,8 +30,8 @@
             </div>
             {% endif %}
             <div class="inputBox">
-                <input type="email" name="email" value="{{request.POST.email}}" required="">
-                <label>E-mail</label>
+                <input id="email" type="email" name="email" value="{{request.POST.email}}" required="">
+                <label for="email">E-mail</label>
             </div>
             {% if error1 %}
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -42,12 +42,12 @@
             </div>
             {% endif %}
             <div class="inputBox">
-                <input type="password" name="password1" value="{{request.POST.password1}}" required="">
-                <label>Password</label>
+                <input id="password1" type="password" name="password1" value="{{request.POST.password1}}" required="">
+                <label for="password1">Password</label>
             </div>
             <div class="inputBox">
-                <input type="password" name="password2" value="{{request.POST.password2}}" required="">
-                <label>Re-Password</label>
+                <input id="password2" type="password" name="password2" value="{{request.POST.password2}}" required="">
+                <label for="password2">Re-Password</label>
             </div>
             {% if error2 %}
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -58,8 +58,8 @@
             </div>
             {% endif %}
             <div class="inputBox">
-                <input type="number" name="age" value="{{request.POST.age}}" required="">
-                <label>Age</label>
+                <input id="age" type="number" name="age" value="{{request.POST.age}}" required="">
+                <label for="age">Age</label>
             </div>
             <input class="btn btn-primary" type="submit" value="Sign Up">
         </form>

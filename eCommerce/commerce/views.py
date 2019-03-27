@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
-from .models import Products, Category, Users
+from .models import Products, Category, Users, Invoices
+from django.db.models import Count
 # Create your views here.
 
 
@@ -163,13 +164,29 @@ def cart(request):
     return render(request, 'Commerce/cart.html', context=context)
 
 
-def profile(request):
+def profile(request, name):
     if 'username' in session:
-        user_login = Users.objects.get(name=session['username'])
+        name = name.title()
+        users = Users.objects.all()
+        user_login = users.get(name=session['username'])
+        other_user = users.filter(name=name)
+        if not other_user:
+            return redirect('error_page')
+        other_user = users.get(name=name)
+        history_of_user = Invoices.objects.filter(
+            customer=other_user.id
+        ).annotate(
+            product_quantity=Count('product')
+        ).order_by('-date_time')[:10]
+
+        if not history_of_user:
+            history_of_user = None
     else:
         return redirect('login')
     context = {
         'login': user_login,
+        'other_user': other_user,
+        'products': history_of_user
     }
     return render(request, 'Commerce/profile.html', context=context)
 

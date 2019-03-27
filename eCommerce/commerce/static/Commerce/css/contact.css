@@ -1,7 +1,7 @@
 div h1{
     font-size: 50px;
     color: #777;
-    font-family: arial;
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
     border-bottom: 1px solid #777;
     display: inline-block;
     padding-bottom: 10px;
