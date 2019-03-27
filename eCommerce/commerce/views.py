@@ -31,7 +31,7 @@ def register(request):
         username = request.POST.get('username').title()
         if Users.objects.filter(name=username):
             error = 'Username Already Exist'
-            return render(request, 'Commerce/signup.html',{'error': error})
+            return render(request, 'Commerce/signup.html', {'error': error})
         email = request.POST.get('email')
         if Users.objects.filter(email=email):
             error = 'Email Already Exist'
@@ -67,11 +67,11 @@ def home(request):
     page = request.GET.get('page')
     products = paginator.get_page(page)
     if 'username' in session:
-        login = Users.objects.get(name=session['username'])
+        user_login = Users.objects.get(name=session['username'])
     else:
-        login = None
+        user_login = None
     context = {
-        'login': login,
+        'login': user_login,
         'products': products,
         'category': categories,
     }
@@ -86,25 +86,25 @@ def single_category(request, category):
     page = request.GET.get('page')
     products = paginator.get_page(page)
     if 'username' in session:
-        login = Users.objects.get(name=session['username'])
+        user_login = Users.objects.get(name=session['username'])
     else:
-        login = None
+        user_login = None
     context = {
-        'login': login,
+        'login': user_login,
         'products': products,
         'category': categories,
     }
     return render(request, 'Commerce/home.html', context=context)
 
 
-def single_product(request, id):
-    product = Products.objects.get(id=id)
+def single_product(request, product_id):
+    product = Products.objects.get(id=product_id)
     if 'username' in session:
-        login = Users.objects.get(name=session['username'])
+        user_login = Users.objects.get(name=session['username'])
     else:
-        login = None
+        user_login = None
     context = {
-        'login': login,
+        'login': user_login,
         'product': product
     }
     return render(request, 'Commerce/product.html', context=context)
@@ -119,11 +119,11 @@ def search(request):
     page = request.GET.get('page')
     products = paginator.get_page(page)
     if 'username' in session:
-        login = Users.objects.get(name=session['username'])
+        user_login = Users.objects.get(name=session['username'])
     else:
-        login = None
+        user_login = None
     context = {
-        'login': login,
+        'login': user_login,
         'products': products,
         'category': categories,
     }
@@ -132,66 +132,65 @@ def search(request):
 
 def team(request):
     if 'username' in session:
-        login = Users.objects.get(name=session['username'])
+        user_login = Users.objects.get(name=session['username'])
     else:
-        login = None
+        user_login = None
     context = {
-        'login': login,
+        'login': user_login,
     }
     return render(request, 'Commerce/team.html', context=context)
 
 
 def contact(request):
     if 'username' in session:
-        login = Users.objects.get(name=session['username'])
+        user_login = Users.objects.get(name=session['username'])
     else:
-        login = None
+        user_login = None
     context = {
-        'login': login,
+        'login': user_login,
     }
     return render(request, 'Commerce/contact.html', context=context)
 
 
 def cart(request):
     if 'username' in session:
-        login = Users.objects.get(name=session['username'])
+        user_login = Users.objects.get(name=session['username'])
     else:
-        login = None
+        user_login = None
     context = {
-        'login': login,
+        'login': user_login,
     }
     return render(request, 'Commerce/cart.html', context=context)
 
 
 def profile(request):
     if 'username' in session:
-        login = Users.objects.get(name=session['username'])
+        user_login = Users.objects.get(name=session['username'])
     else:
         return redirect('login')
     context = {
-        'login': login,
+        'login': user_login,
     }
     return render(request, 'Commerce/profile.html', context=context)
 
 
 def account(request):
     if 'username' in session:
-        login = Users.objects.get(name=session['username'])
+        user_login = Users.objects.get(name=session['username'])
     else:
         return redirect('login')
     context = {
-        'login': login,
+        'login': user_login,
     }
     if request.method == 'POST':
-        login.password = request.POST.get('password')
-        login.age = request.POST.get('age')
-        login.gender = request.POST.get('gender')
-        login.phone = request.POST.get('phone')
-        login.country = request.POST.get('country')
-        login.save()
+        user_login.password = request.POST.get('password')
+        user_login.age = request.POST.get('age')
+        user_login.gender = request.POST.get('gender')
+        user_login.phone = request.POST.get('phone')
+        user_login.country = request.POST.get('country')
+        user_login.save()
     return render(request, 'Commerce/account.html', context=context)
 
 
 def error_page(request):
     return render(request, 'commerce/404.html')
-
