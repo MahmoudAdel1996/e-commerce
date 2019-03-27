@@ -2,17 +2,62 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6231fa5-6c32-491b-a095-de00f097f83b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Mahmoud.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Mahmoud.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/eCommerce.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/eCommerce.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commerce/templates/Commerce/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/commerce/templates/Commerce/account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commerce/templates/Commerce/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/commerce/templates/Commerce/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commerce/templates/Commerce/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/commerce/templates/Commerce/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commerce/templates/Commerce/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/commerce/templates/Commerce/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commerce/templates/Commerce/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/commerce/templates/Commerce/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commerce/templates/Commerce/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/commerce/templates/Commerce/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commerce/templates/Commerce/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/commerce/templates/Commerce/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commerce/templates/Commerce/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/commerce/templates/Commerce/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commerce/templates/Commerce/team.html" beforeDir="false" afterPath="$PROJECT_DIR$/commerce/templates/Commerce/team.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commerce/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/commerce/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eCommerce/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/eCommerce/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/_ast27.cp36-win_amd64.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/_ast3.cp36-win_amd64.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/astroid-2.2.0.dist-info/INSTALLER" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/astroid-2.2.0.dist-info/METADATA" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/astroid-2.2.0.dist-info/RECORD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/astroid-2.2.0.dist-info/WHEEL" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/astroid-2.2.0.dist-info/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/astroid/__pkginfo__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/astroid/__pkginfo__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/astroid/brain/brain_builtin_inference.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/astroid/brain/brain_builtin_inference.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/astroid/brain/brain_numpy.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/astroid/brain/brain_numpy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/astroid/node_classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/astroid/node_classes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/astroid/objects.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/astroid/objects.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/isort-4.3.9.dist-info/INSTALLER" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/isort-4.3.9.dist-info/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/isort-4.3.9.dist-info/METADATA" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/isort-4.3.9.dist-info/RECORD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/isort-4.3.9.dist-info/WHEEL" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/isort-4.3.9.dist-info/entry_points.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/isort-4.3.9.dist-info/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/isort/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/isort/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/isort/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/isort/__main__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/isort/finders.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/isort/finders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/isort/isort.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/isort/isort.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/isort/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/isort/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/isort/pie_slice.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/isort/pie_slice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/isort/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/isort/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/pylint-2.3.0.dist-info/INSTALLER" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/pylint-2.3.0.dist-info/METADATA" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/pylint-2.3.0.dist-info/RECORD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/pylint-2.3.0.dist-info/WHEEL" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/pylint-2.3.0.dist-info/entry_points.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/pylint-2.3.0.dist-info/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/pylint/__pkginfo__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/pylint/__pkginfo__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/pylint/reporters/json.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/pylint/reporters/json.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/pylint/test/test_self.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/pylint/test/test_self.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/typed_ast-1.2.0.dist-info/INSTALLER" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/typed_ast-1.2.0.dist-info/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/typed_ast-1.2.0.dist-info/METADATA" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/typed_ast-1.2.0.dist-info/RECORD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/typed_ast-1.2.0.dist-info/WHEEL" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/typed_ast-1.2.0.dist-info/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/typed_ast/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/typed_ast/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/typed_ast/ast27.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/typed_ast/ast27.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/typed_ast/ast3.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/typed_ast/ast3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Lib/site-packages/typed_ast/conversions.py" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Lib/site-packages/typed_ast/conversions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Scripts/epylint.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Scripts/epylint.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Scripts/isort.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Scripts/isort.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Scripts/pylint.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Scripts/pylint.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Scripts/pyreverse.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Scripts/pyreverse.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../env/Scripts/symilar.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../env/Scripts/symilar.exe" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,11 +67,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/commerce/templates/Commerce/team.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="37" column="18" lean-forward="true" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
+            <state relative-caret-position="21">
+              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/eCommerce/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147">
+              <caret line="79" column="19" selection-start-line="79" selection-start-column="19" selection-end-line="79" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/eCommerce/__init__.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/commerce/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2738">
+              <caret line="51" column="42" lean-forward="true" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/commerce/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,9 +147,7 @@
         <option value="$PROJECT_DIR$/commerce/templates/Commerce/login.html" />
         <option value="$PROJECT_DIR$/commerce/templates/Commerce/account.html" />
         <option value="$PROJECT_DIR$/commerce/templates/Commerce/signup.html" />
-        <option value="$PROJECT_DIR$/eCommerce/settings.py" />
         <option value="$PROJECT_DIR$/commerce/templates/Commerce/home.html" />
-        <option value="$PROJECT_DIR$/commerce/views.py" />
         <option value="$PROJECT_DIR$/commerce/templates/commerce/account.html" />
         <option value="$PROJECT_DIR$/commerce/templates/commerce/cart.html" />
         <option value="$PROJECT_DIR$/commerce/templates/commerce/contact.html" />
@@ -77,6 +158,8 @@
         <option value="$PROJECT_DIR$/commerce/templates/commerce/signup.html" />
         <option value="$PROJECT_DIR$/commerce/templates/commerce/team.html" />
         <option value="$PROJECT_DIR$/commerce/templates/Commerce/team.html" />
+        <option value="$PROJECT_DIR$/commerce/views.py" />
+        <option value="$PROJECT_DIR$/eCommerce/settings.py" />
       </list>
     </option>
   </component>
@@ -109,19 +192,6 @@
             <path>
               <item name="eCommerce" type="b2602c69:ProjectViewProjectNode" />
               <item name="eCommerce" type="462c0819:PsiDirectoryNode" />
-              <item name="commerce" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eCommerce" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eCommerce" type="462c0819:PsiDirectoryNode" />
-              <item name="commerce" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Commerce" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eCommerce" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eCommerce" type="462c0819:PsiDirectoryNode" />
               <item name="eCommerce" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -134,7 +204,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="Settings.Markdown" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -162,10 +232,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1989446" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19866072" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -176,8 +246,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49925596" visible="true" weight="0.18722944" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50074404" side_tool="true" weight="0.32850242" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4985119" visible="true" weight="0.18679549" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5014881" side_tool="true" weight="0.18679549" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -262,16 +332,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commerce/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/commerce/templates/Commerce/profile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -293,20 +353,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commerce/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/eCommerce/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/commerce/static/Commerce/js/scroll.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -314,66 +360,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commerce/templates/commerce/account.html">
+    <entry file="file://$PROJECT_DIR$/commerce/templates/Commerce/account.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commerce/templates/commerce/cart.html">
+    <entry file="file://$PROJECT_DIR$/commerce/templates/Commerce/cart.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commerce/templates/commerce/contact.html">
+    <entry file="file://$PROJECT_DIR$/commerce/templates/Commerce/contact.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commerce/templates/commerce/home.html">
+    <entry file="file://$PROJECT_DIR$/commerce/templates/Commerce/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commerce/templates/commerce/login.html">
+    <entry file="file://$PROJECT_DIR$/commerce/templates/Commerce/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commerce/templates/commerce/navbar.html">
+    <entry file="file://$PROJECT_DIR$/commerce/templates/Commerce/navbar.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/commerce/templates/commerce/product.html">
+    <entry file="file://$PROJECT_DIR$/commerce/templates/Commerce/product.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commerce/templates/commerce/profile.html">
+    <entry file="file://$PROJECT_DIR$/commerce/templates/Commerce/profile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commerce/templates/commerce/signup.html">
+    <entry file="file://$PROJECT_DIR$/commerce/templates/Commerce/signup.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commerce/templates/commerce/team.html">
+    <entry file="file://$PROJECT_DIR$/commerce/templates/Commerce/team.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
@@ -382,8 +428,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/commerce/templates/Commerce/team.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="37" column="18" lean-forward="true" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
+        <state relative-caret-position="21">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eCommerce/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commerce/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commerce/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2738">
+          <caret line="51" column="42" lean-forward="true" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eCommerce/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="79" column="19" selection-start-line="79" selection-start-column="19" selection-end-line="79" selection-end-column="19" />
         </state>
       </provider>
     </entry>

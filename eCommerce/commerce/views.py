@@ -35,7 +35,7 @@ def register(request):
         email = request.POST.get('email')
         if Users.objects.filter(email=email):
             error = 'Email Already Exist'
-            return render(request, 'Commerce/signup.html',{'error1': error})
+            return render(request, 'Commerce/signup.html', {'error1': error})
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
         age = request.POST.get('age')
