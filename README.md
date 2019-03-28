@@ -1,6 +1,11 @@
 # e-commerce
 
-`sql	
+## DataBase
+using postgres after clone the project do this things to restore database in your computer.  
+```sql	
 CREATE DATABASE ecommerce;
-`
-pg_restore --dbname=ecommerce --verbose backupDB.sql
+```  
+
+```bash
+$ pg_restore --dbname=ecommerce --verbose backupDB.sql
+```
