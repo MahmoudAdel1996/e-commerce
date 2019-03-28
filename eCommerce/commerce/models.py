@@ -54,6 +54,9 @@ class Invoices(models.Model):
     class Meta:
         verbose_name_plural = "Invoices"
 
+    def total_price(self):
+        return self.quantity * self.product.price
+
     def __str__(self):
         return self.status + " | " + str(self.date_time.strftime('%Y-%m-%d %I:%M %p'))
 

@@ -55,8 +55,8 @@
                                 <div class="col-md-9">
                                   <div class="card-body">
                                     <h5 class="card-title"><a class="card-link" href="{% url 'single_product' product.product.id %}">{{ product.product.name }}</a></h5>
-                                    <p class="text-info">Quantity: {{ product.product_quantity }}</p>
-                                    <p class="text-danger">${{ product.product.price }}</p>
+                                    <p class="text-info">Quantity: {{ product.quantity }}</p>
+                                    <p class="text-danger">Total price: ${{ product.total_price }}</p>
                                     <p class="card-text"><small class="text-muted">{{ product.date_time }}</small></p>
                                   </div>
                                 </div>

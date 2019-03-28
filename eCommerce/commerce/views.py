@@ -100,6 +100,8 @@ def single_category(request, category):
 
 def single_product(request, product_id):
     product = Products.objects.get(id=product_id)
+    users = Users.objects.all()
+
     if 'username' in session:
         user_login = Users.objects.get(name=session['username'])
     else:
@@ -175,8 +177,6 @@ def profile(request, name):
         other_user = users.get(name=name)
         history_of_user = Invoices.objects.filter(
             customer=other_user.id
-        ).annotate(
-            product_quantity=Count('product')
         ).order_by('-date_time')[:10]
 
         if not history_of_user:
