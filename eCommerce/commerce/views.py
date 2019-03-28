@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from .models import Products, Category, Users, Invoices
-from django.db.models import Count
 # Create your views here.
 
 
@@ -100,15 +99,16 @@ def single_category(request, category):
 
 def single_product(request, product_id):
     product = Products.objects.get(id=product_id)
-    users = Users.objects.all()
-
+    invoices = Invoices.objects.filter(product_id=product_id)[:10]
     if 'username' in session:
         user_login = Users.objects.get(name=session['username'])
     else:
         user_login = None
     context = {
         'login': user_login,
-        'product': product
+        'product': product,
+        'invoices': invoices
+
     }
     return render(request, 'Commerce/product.html', context=context)
 

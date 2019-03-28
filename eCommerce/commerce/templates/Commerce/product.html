@@ -28,6 +28,40 @@
                     <a href="#" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Add To Cart</a>
                 </div>
             </div>
+            <br>
+            <hr>
+        </div>
+        <div class="container">
+            <h3 class="text-secondary p-4">Users Buy This Product</h3>
+            {% if invoices %}
+                {% for invoice in invoices %}
+                    <div class="card mb-3 p-2">
+                      <div class="row no-gutters">
+                        <div class="col-md-3" style="max-width: 5rem">
+                            {% if invoice.customer.gender == 'Female' %}
+                                <img src="{% static 'Commerce/image/female_icon.png' %}" class="card-img" alt="{{ invoice.customer.name }}">
+                            {% else %}
+                                <img src="{% static 'Commerce/image/User-icon.png' %}" class="card-img" alt="{{ invoice.customer.name }}">
+                            {% endif %}
+                        </div>
+                        <div class="col-md-9">
+                          <div class="card-body">
+                            <h5 class="card-title"><a class="card-link" href="{% url 'profile' invoice.customer.name %}">{{ invoice.customer.name }}</a></h5>
+                            <small class="text-muted">{{ invoice.customer.email }}</small>
+                              {% if invoice.status == 'Buy' %}
+                              <p class="card-text"><small class="text-success">{{ invoice.status }} {{ invoice.quantity }}</small></p>
+                              {% else %}
+                              <p class="card-text"><small class="text-danger">{{ invoice.status }} {{ invoice.quantity }}</small></p>
+                              {% endif %}
+                            <p class="card-text"><small class="text-muted">{{ invoice.date_time }}</small></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-center p-2 text-secondary">doesn't have any history</p>
+            {% endif %}
         </div>
     </div>
 
@@ -40,3 +74,4 @@
     <script src="{% static 'Commerce/js/product.js' %}"></script>
 </body>
 </html>
+
