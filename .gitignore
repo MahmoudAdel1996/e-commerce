@@ -1,3 +1,6 @@
 .idea
 eCommerce/.idea
 eCommerce/__pycache__
+eCommerce/commerce/__pycache__
+eCommerce/commerce/migrations/__pycache__
+eCommerce/eCommerce/__pycache__
