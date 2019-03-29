@@ -8,7 +8,13 @@ function add_to_cart(entry){
             xhr.setRequestHeader('x-CSRFToken', csrf_token)
         },
         success: function (data) {
-            $('#lenCard').text(data)
+            if (data == 'login'){
+                alert("You Should Login First.");
+            }
+            else{
+                $('#lenCard').text(data);
+            }
+
         }
     })
 }

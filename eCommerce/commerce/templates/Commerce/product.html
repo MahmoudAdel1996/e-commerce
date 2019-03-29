@@ -25,7 +25,7 @@
                 <div class="col-7 card-body">
                     <p class="text-secondary">{{product.description}}</p>
                     <h3 class="text-danger"><strong>${{product.price}}</strong></h3>
-                    <a href="#" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Add To Cart</a>
+                    <button onclick="add_to_cart(this)" data-id="{{ product.id }}" type="button" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Add To Cart</button>
                 </div>
             </div>
             <br>
@@ -72,6 +72,9 @@
     <script src="{% static 'Commerce/js/scroll.js' %}"></script>
     <script src="{% static 'Commerce/js/navbar.js' %}"></script>
     <script src="{% static 'Commerce/js/product.js' %}"></script>
+    <script>
+		    var csrf_token = '{{ csrf_token }}';
+    </script>
 </body>
 </html>
 
