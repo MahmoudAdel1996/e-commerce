@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from .models import Products, Category, Users, Invoices
+from django.shortcuts import HttpResponse
 # Create your views here.
 
 
-session = {}
+product_on_cart = {}
+x = []
 
 
 def login(request):
@@ -13,7 +15,8 @@ def login(request):
         password = request.POST.get('password')
         if username and password:
             if Users.objects.filter(name=username, password=password):
-                session['username'] = username
+                request.session['username'] = username
+                # session['username'] = username
                 return redirect('home')
             else:
                 error = "The username is not a valid."
@@ -41,7 +44,7 @@ def register(request):
         age = request.POST.get('age')
 
         if password1 == password2:
-            session['username'] = username
+            request.session['username'] = username
             Users(id=(last.id+1),
                   name=username,
                   email=email,
@@ -56,7 +59,10 @@ def register(request):
 
 
 def logout(request):
-    del session['username']
+    try:
+        del request.session['username']
+    except KeyError:
+        pass
     return redirect('home')
 
 
@@ -66,14 +72,15 @@ def home(request):
     paginator = Paginator(items, 51)
     page = request.GET.get('page')
     products = paginator.get_page(page)
-    if 'username' in session:
-        user_login = Users.objects.get(name=session['username'])
+    if 'username' in request.session:
+        user_login = Users.objects.get(name=request.session['username'])
     else:
         user_login = None
     context = {
         'login': user_login,
         'products': products,
         'category': categories,
+        'lenCard': len(product_on_cart.get(request.session.get('username'), []))
     }
     return render(request, 'Commerce/home.html', context=context)
 
@@ -85,14 +92,15 @@ def single_category(request, category):
     paginator = Paginator(items, 51)
     page = request.GET.get('page')
     products = paginator.get_page(page)
-    if 'username' in session:
-        user_login = Users.objects.get(name=session['username'])
+    if 'username' in request.session:
+        user_login = Users.objects.get(name=request.session['username'])
     else:
         user_login = None
     context = {
         'login': user_login,
         'products': products,
         'category': categories,
+        'lenCard': len(product_on_cart.get(request.session.get('username'), []))
     }
     return render(request, 'Commerce/home.html', context=context)
 
@@ -100,15 +108,15 @@ def single_category(request, category):
 def single_product(request, product_id):
     product = Products.objects.get(id=product_id)
     invoices = Invoices.objects.filter(product_id=product_id)[:10]
-    if 'username' in session:
-        user_login = Users.objects.get(name=session['username'])
+    if 'username' in request.session:
+        user_login = Users.objects.get(name=request.session['username'])
     else:
         user_login = None
     context = {
         'login': user_login,
         'product': product,
-        'invoices': invoices
-
+        'invoices': invoices,
+        'lenCard': len(product_on_cart.get(request.session.get('username'), []))
     }
     return render(request, 'Commerce/product.html', context=context)
 
@@ -121,56 +129,76 @@ def search(request):
     paginator = Paginator(items, 51)
     page = request.GET.get('page')
     products = paginator.get_page(page)
-    if 'username' in session:
-        user_login = Users.objects.get(name=session['username'])
+    if 'username' in request.session:
+        user_login = Users.objects.get(name=request.session['username'])
     else:
         user_login = None
     context = {
         'login': user_login,
         'products': products,
         'category': categories,
+        'lenCard': len(product_on_cart.get(request.session.get('username'), []))
     }
     return render(request, 'Commerce/home.html', context=context)
 
 
 def team(request):
-    if 'username' in session:
-        user_login = Users.objects.get(name=session['username'])
+    if 'username' in request.session:
+        user_login = Users.objects.get(name=request.session['username'])
     else:
         user_login = None
     context = {
         'login': user_login,
+        'lenCard': len(product_on_cart.get(request.session.get('username'), []))
     }
     return render(request, 'Commerce/team.html', context=context)
 
 
 def contact(request):
-    if 'username' in session:
-        user_login = Users.objects.get(name=session['username'])
+    if 'username' in request.session:
+        user_login = Users.objects.get(name=request.session['username'])
     else:
         user_login = None
     context = {
         'login': user_login,
+        'lenCard': len(product_on_cart.get(request.session.get('username'), []))
     }
     return render(request, 'Commerce/contact.html', context=context)
 
 
+def add_to_cart(request, product_id):
+    product = Products.objects.get(id=product_id)
+
+    try:
+        x.extend(product_on_cart.get(request.session.get('username'), []))
+    except Exception as e:
+        print(e)
+    x.append(product)
+
+    y = list(x)
+    product_on_cart[request.session['username']] = y
+    x.clear()
+    return HttpResponse(len(product_on_cart[request.session['username']]))
+
+
 def cart(request):
-    if 'username' in session:
-        user_login = Users.objects.get(name=session['username'])
+    if 'username' in request.session:
+        user_login = Users.objects.get(name=request.session['username'])
     else:
         user_login = None
     context = {
+        'products': product_on_cart.get(request.session.get('username')),
         'login': user_login,
+        'lenCard': len(product_on_cart.get(request.session.get('username'), []))
     }
     return render(request, 'Commerce/cart.html', context=context)
 
 
 def profile(request, name):
-    if 'username' in session:
+    if 'username' in request.session:
         name = name.title()
         users = Users.objects.all()
-        user_login = users.get(name=session['username'])
+        user_login = users.get(name=request.session['username'])
         other_user = users.filter(name=name)
         if not other_user:
             return redirect('error_page')
@@ -186,18 +214,20 @@ def profile(request, name):
     context = {
         'login': user_login,
         'other_user': other_user,
-        'products': history_of_user
+        'products': history_of_user,
+        'lenCard': len(product_on_cart.get(request.session.get('username'), []))
     }
     return render(request, 'Commerce/profile.html', context=context)
 
 
 def account(request):
-    if 'username' in session:
-        user_login = Users.objects.get(name=session['username'])
+    if 'username' in request.session:
+        user_login = Users.objects.get(name=request.session['username'])
     else:
         return redirect('login')
     context = {
         'login': user_login,
+        'lenCard': len(product_on_cart.get(request.session.get('username'), []))
     }
     if request.method == 'POST':
         user_login.password = request.POST.get('password')

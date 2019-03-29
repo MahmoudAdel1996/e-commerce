@@ -17,7 +17,25 @@
     {% include "Commerce/navbar.html" %}
 
     <div class="container">
-        <h1 class="text-secondary">Cart</h1>
+        <h1 class="text-secondary text-center">Cart</h1>
+
+		    {% for product in products %}
+        <div class="card mb-3 p-2">
+          <div class="row no-gutters">
+            <div class="col-md-3">
+              <img src="{{ product.image.url }}" class="card-img" alt="{{ product.name }}">
+            </div>
+            <div class="col-md-9">
+              <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="text-info">Quantity: 1</p>
+                <p class="text-danger">Total price: ${{ product.price }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+		    {% endfor %}
+
     </div>
 
     <script src="{% static 'Commerce/js/jquery-3.3.1.min.js' %}"></script>

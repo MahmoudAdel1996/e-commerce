@@ -21,7 +21,7 @@
                 <a class="btn text-light" href="{% url 'register' %}"><i class="fas fa-user-plus"></i> Register</a>
                 <a class="btn text-light" href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
             {% endif %}
-            <a class="btn text-light" href="{% url 'cart' %}"><i class="fas fa-cart-plus"></i> Cart <span class="badge badge-light">0</span></a>
+            <a class="btn text-light" href="{% url 'cart' %}"><i class="fas fa-cart-plus"></i> Cart <span id="lenCard" class="badge badge-light">{{ lenCard }}</span></a>
         </div>
     </div>
 </div>

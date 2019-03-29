@@ -73,7 +73,7 @@
                         </div>
                         <div class="text-center">
                             <h3>${{ product.price }}</h3>
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Add To Cart</button>
+                            <button onclick="add_to_cart(this)" data-id="{{ product.id }}" type="button" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Add To Cart</button>
                         </div><br>
                     </form>
                     {% endfor %}
@@ -129,5 +129,8 @@
     <script src="{% static 'Commerce/js/scroll.js' %}"></script>
     <script src="{% static 'Commerce/js/home.js' %}"></script>
     <script src="{% static 'Commerce/js/navbar.js' %}"></script>
+    <script>
+		    var csrf_token = '{{ csrf_token }}';
+    </script>
 </body>
 </html>
