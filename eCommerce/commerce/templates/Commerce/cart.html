@@ -18,8 +18,8 @@
 
     <div class="container">
         <h1 class="text-secondary text-center">Cart</h1>
-
-		    {% for product in products %}
+				{% if products %}
+					{% for product in products %}
         <div class="card mb-3 p-2">
           <div class="row no-gutters">
             <div class="col-md-3">
@@ -30,11 +30,19 @@
                 <h5 class="card-title">{{ product.name }}</h5>
                 <p class="text-info">Quantity: 1</p>
                 <p class="text-danger">Total price: ${{ product.price }}</p>
+
+		            <button onclick="delete_from_cart(this)" data-id="{{ product.id }}" type="button" class="btn btn-danger"><i class="fas fa-cart-plus"></i> remove from Cart</button>
+
               </div>
             </div>
           </div>
         </div>
 		    {% endfor %}
+			{% else %}
+				<br>
+            <h1 class="text-secondary">No Items Here</h1>
+				<br>
+      {% endif %}
 
     </div>
 
@@ -45,6 +53,10 @@
     <script src="{% static 'Commerce/js/scroll.js' %}"></script>
     <script src="{% static 'Commerce/js/navbar.js' %}"></script>
     <script src="{% static 'Commerce/js/cart.js' %}"></script>
+
+		<script>
+		    var csrf_token = '{{ csrf_token }}';
+		</script>
 
 </body>
 </html>

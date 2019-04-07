@@ -167,21 +167,45 @@ def contact(request):
 
 
 def add_to_cart(request, product_id):
-    if 'username' in request.session:
-        product = Products.objects.get(id=product_id)
+    if request.method == 'POST':
+        if 'username' in request.session:
+            product = Products.objects.get(id=product_id)
 
-        try:
-            x.extend(product_on_cart.get(request.session.get('username'), []))
-        except Exception as e:
-            print(e)
-        x.append(product)
+            try:
+                x.extend(product_on_cart.get(request.session.get('username'), []))
+            except Exception as e:
+                print(e)
+            x.append(product)
 
-        y = list(x)
-        product_on_cart[request.session['username']] = y
-        x.clear()
-        return HttpResponse(len(product_on_cart[request.session['username']]))
+            y = list(x)
+            product_on_cart[request.session['username']] = y
+            x.clear()
+            return HttpResponse(len(product_on_cart[request.session['username']]))
+        else:
+            return HttpResponse('login')
     else:
-        return HttpResponse('login')
+        return redirect('error_page')
+
+
+def delete_from_cart(request, product_id):
+    if request.method == 'DELETE':
+        if 'username' in request.session:
+            product = Products.objects.get(id=product_id)
+
+            try:
+                x.extend(product_on_cart.get(request.session.get('username'), []))
+            except Exception as e:
+                print(e)
+            x.remove(product)
+
+            y = list(x)
+            product_on_cart[request.session['username']] = y
+            x.clear()
+            return HttpResponse(len(product_on_cart[request.session['username']]))
+        else:
+            return HttpResponse('login')
+    else:
+        return redirect('error_page')
 
 
 def cart(request):
