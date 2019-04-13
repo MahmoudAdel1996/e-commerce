@@ -18,31 +18,34 @@
 
     <div class="container">
         <h1 class="text-secondary text-center">Cart</h1>
-				{% if products %}
+
+        {% if products %}
+
 					{% for product in products %}
-        <div class="card mb-3 p-2">
-          <div class="row no-gutters">
-            <div class="col-md-3">
-              <img src="{{ product.image.url }}" class="card-img" alt="{{ product.name }}">
-            </div>
-            <div class="col-md-9">
-              <div class="card-body">
-                <h5 class="card-title">{{ product.name }}</h5>
-                <p class="text-info">Quantity: 1</p>
-                <p class="text-danger">Total price: ${{ product.price }}</p>
+          <div class="card mb-3 p-2">
+            <div class="row no-gutters">
+              <div class="col-md-3">
+                <img src="{{ product.image.url }}" class="card-img" alt="{{ product.name }}">
+              </div>
+              <div class="col-md-9">
+                <div class="card-body">
+                  <h5 class="card-title">{{ product.name }}</h5>
+                  <p class="text-info">Quantity: 1</p>
+                  <p class="text-danger">Total price: ${{ product.price }}</p>
 
-		            <button onclick="delete_from_cart(this)" data-id="{{ product.id }}" type="button" class="btn btn-danger"><i class="fas fa-times"></i> Remove From Cart</button>
+  		            <button onclick="delete_from_cart(this)" data-id="{{ product.id }}" type="button" class="btn btn-danger"><i class="fas fa-times"></i> Remove From Cart</button>
 
+                </div>
               </div>
             </div>
           </div>
-        </div>
-		    {% endfor %}
-			{% else %}
+          {% endfor %}
+
+        {% else %}
 				<br>
             <h1 class="text-secondary">No Items Here</h1>
 				<br>
-      {% endif %}
+        {% endif %}
 
     </div>
 

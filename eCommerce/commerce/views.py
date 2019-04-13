@@ -69,7 +69,7 @@ def register(request):
             # add username to session
             request.session['username'] = username
             # add the new user to database
-            Users(id=(last.id+1), # last.id + 1 to add new user on new id
+            Users(id=(last.id+1),  # last.id + 1 to add new user on new id
                   name=username,
                   email=email,
                   password=password1,
@@ -283,7 +283,7 @@ def delete_from_cart(request, product_id):
     if request.method == 'DELETE':
         # if user logged in
         if 'username' in request.session:
-            # get the produt from database you want to remove it from cart
+            # get the product from database you want to remove it from cart
             product = Products.objects.get(id=product_id)
 
             try:
@@ -368,7 +368,7 @@ def profile(request, name):
     return render(request, 'Commerce/profile.html', context=context)
 
 
-# when you click on my account button on drop menu in hrml page
+# when you click on my account button on drop menu in html page
 # or when you go to "localhost:8000/account/" account method will execute
 def account(request):
     # if user logged in
