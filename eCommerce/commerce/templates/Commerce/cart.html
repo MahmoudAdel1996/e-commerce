@@ -17,36 +17,39 @@
     {% include "Commerce/navbar.html" %}
 
     <div class="container">
-        <h1 class="text-secondary text-center">Cart</h1>
+        <h1 class="text-secondary text-center font-weight-bold">Cart</h1>
 
         {% if products %}
 
 					{% for product in products %}
           <div class="card mb-3 p-2">
             <div class="row no-gutters">
-              <div class="col-md-3">
-                <img src="{{ product.image.url }}" class="card-img" alt="{{ product.name }}">
+              <div class="col-5 col-md-3 m-auto" style="width: 250px">
+                <img width="100%" src="{{ product.image.url }}" class="card-img" alt="{{ product.name }}">
               </div>
-              <div class="col-md-9">
+              <div class="col-7 col-md-9 m-auto">
                 <div class="card-body">
                   <h5 class="card-title">{{ product.name }}</h5>
-                  <p class="text-info">Quantity: 1</p>
-                  <p class="text-danger">Total price: ${{ product.price }}</p>
+                  <div class="text-info impact">Quantity: 1</div>
+                  <h4 class="text-danger impact">${{ product.price }}</h4>
 
-  		            <button onclick="delete_from_cart(this)" data-id="{{ product.id }}" type="button" class="btn btn-danger"><i class="fas fa-times"></i> Remove From Cart</button>
+  		            <button onclick="delete_from_cart(this)" data-id="{{ product.id }}" type="button" class="btn btn-danger font-weight-bold"><i class="fas fa-times"></i> Remove</button>
 
                 </div>
               </div>
             </div>
           </div>
           {% endfor %}
-
         {% else %}
 				<br>
             <h1 class="text-secondary">No Items Here</h1>
 				<br>
         {% endif %}
-
+				<div class="text-center">
+				      <br>
+								<button onclick="buy()" type="button" class="btn btn-dark font-weight-bold" style="width: 9rem;font-size: 18px;"><i class="fas fa-money-bill-alt"></i> Buy</button>
+				      <br><br>
+				</div>
     </div>
 
     <script src="{% static 'Commerce/js/jquery-3.3.1.min.js' %}"></script>
@@ -54,7 +57,9 @@
     <script src="{% static 'Commerce/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'Commerce/js/jquery.nicescroll.min.js' %}"></script>
     <script src="{% static 'Commerce/js/scroll.js' %}"></script>
+    <script src="{% static 'Commerce/js/upperheader.js' %}"></script>
     <script src="{% static 'Commerce/js/navbar.js' %}"></script>
+    <script src="{% static 'Commerce/js/notify.min.js' %}"></script>
     <script src="{% static 'Commerce/js/cart.js' %}"></script>
 
 		<script>

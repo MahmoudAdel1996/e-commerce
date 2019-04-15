@@ -328,6 +328,28 @@ def cart(request):
     return render(request, 'Commerce/cart.html', context=context)
 
 
+def buy_items(request):
+    if request.method == 'POST':
+        last = Invoices.objects.latest('invoice_num').invoice_num
+        products = product_on_cart[request.session['username']]
+
+        if len(products) > 0:
+            for product in products:
+                Invoices(
+                    invoice_num=last+1,
+                    customer=Users.objects.get(name=request.session['username']),
+                    status="Buy",
+                    product=product,
+                    quantity=1
+                ).save()
+            product_on_cart[request.session['username']] = []
+            return HttpResponse("Successful")
+        else:
+            return HttpResponse("Unsuccessful")
+
+    return redirect('error_page')
+
+
 # when you go to "localhost:8000/profile/[name]"
 # when you click on profile or click on name of any user
 def profile(request, name):

@@ -1,12 +1,12 @@
 <div class="upper-header sticky-top bg-primary p-2">
     <div class="row justify-content-between">
-        <div class="col-8">
-            <form action="{% url 'search' %}" class="form-inline">
+        <div class="col-auto col-sm-auto col-md-auto col-lg-auto">
+            <form action="{% url 'search' %}" class="form-check-inline">
                 <input class="form-control search-bar" name="search" value="{{request.GET.search}}" type="search" placeholder="Search">
-                <button class="btn btn-default search-btn" type="submit"><i class="fas fa-search"></i></button>
+                <button class="btn btn-default search-btn" type="button"><i class="fas fa-search"></i></button>
             </form>
         </div>
-        <div class="col-4 text-right">
+        <div class="col-auto col-sm-auto col-md-auto col-lg-auto text-right">
             {% if login %}
                 <div class="btn text-light dropdown d-inline">
                     <a class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, {{ login.name }}</a>
@@ -24,5 +24,7 @@
             <a class="btn text-light" href="{% url 'cart' %}"><i class="fas fa-cart-plus"></i> Cart <span id="lenCard" class="badge badge-light">{{ lenCard }}</span></a>
         </div>
     </div>
+		<form action="{% url 'search' %}" class="mt-2 search-bar2">
+			<input class="form-control border-dark" name="search" value="{{request.GET.search}}" type="search" placeholder="Search">
+		</form>
 </div>
-

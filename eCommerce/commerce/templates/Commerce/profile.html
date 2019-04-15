@@ -55,9 +55,9 @@
                                 <div class="col-md-9">
                                   <div class="card-body">
                                     <h5 class="card-title"><a class="card-link" href="{% url 'single_product' product.product.id %}">{{ product.product.name }}</a></h5>
-                                    <p class="text-info">Quantity: {{ product.quantity }}</p>
-                                    <p class="text-danger">Total price: ${{ product.total_price }}</p>
-                                    <p class="card-text"><small class="text-muted">{{ product.date_time }}</small></p>
+                                    <div class="text-info" style="font-family: Impact;">Quantity: {{ product.quantity }}</div>
+                                    <div class="text-danger" style="font-family: Impact;">${{ product.total_price }}</div>
+                                    <div class="card-text" style="font-family: Impact;"><small class="text-muted">{{ product.date_time }}</small></div>
                                   </div>
                                 </div>
                               </div>
@@ -76,6 +76,7 @@
     <script src="{% static 'Commerce/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'Commerce/js/jquery.nicescroll.min.js' %}"></script>
     <script src="{% static 'Commerce/js/scroll.js' %}"></script>
+    <script src="{% static 'Commerce/js/upperheader.js' %}"></script>
     <script src="{% static 'Commerce/js/navbar.js' %}"></script>
 </body>
 </html>

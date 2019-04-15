@@ -2,7 +2,7 @@
   --main-bg-color: #006fcc;
 }
 body{
-  background-color:#fafafa
+  background-color:#fafafa;
 }
 .row{
   margin: 0;
@@ -48,7 +48,9 @@ aside h3{
 .card-text{
     color: #777;
 }
-
+.impact{
+    font-family: Impact;
+}
 footer{
   margin-top: 50px;
   background-color: var(--main-bg-color);
@@ -56,8 +58,9 @@ footer{
   color: #fff;
 }
 
-@media(max-width: 577px){
-    .upper-header form .search-bar{
-        max-width: 10rem;
+@media(max-width: 575px){
+    .siz{
+        overflow: auto;
+        height: 200px;
     }
 }

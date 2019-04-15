@@ -8,11 +8,12 @@ function add_to_cart(entry){
             xhr.setRequestHeader('x-CSRFToken', csrf_token)
         },
         success: function (data) {
-            if (data == 'login'){
-                alert("You Should Login First.");
+            if (data === 'login'){
+                $.notify("You Should Login First.", "info");
             }
             else{
                 $('#lenCard').text(data);
+                $.notify("This product added to cart successfully", "success");
             }
 
         }

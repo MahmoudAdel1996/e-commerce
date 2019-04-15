@@ -21,10 +21,10 @@
       <div class="row justify-content-between">
 
         <!-- aside left start -->
-        <aside class="col-md-12 col-lg-3">
+        <aside class="text-center text-sm-left text-md-left text-lg-left col-sm-5 col-md-4 col-lg-3 ">
           <div class="card">
             <h3 class="text-center"><i class="fas fa-bookmark"></i> Category</h3>
-            <div class="form-check"><br>
+            <div class="form-check siz"><br>
               <a class="card-link" href="{% url 'home' %}"> All</a><br><br>
                 {% for cat in category %}
                     <a class="card-link" href="{% url 'single_category' cat.name %}"> {{ cat.name }}</a><br><br>
@@ -35,7 +35,7 @@
         <!-- aside end -->
 
         <!-- main-section right start -->
-        <main class="col-md-12 col-lg-9">
+        <main class="col-sm-7 col-md-8 col-lg-9">
           <div class="items ">
               <!--start number page-->
               <div class="pagination p-4">
@@ -72,7 +72,7 @@
                           <p class="card-text">{{ product.description|truncatechars:100 }}</p>
                         </div>
                         <div class="text-center">
-                            <h3>${{ product.price }}</h3>
+                            <h3 class="impact">${{ product.price }}</h3>
                             <button onclick="add_to_cart(this)" data-id="{{ product.id }}" type="button" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Add To Cart</button>
                         </div><br>
                     </form>
@@ -127,7 +127,9 @@
     <script src="{% static 'Commerce/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'Commerce/js/jquery.nicescroll.min.js' %}"></script>
     <script src="{% static 'Commerce/js/scroll.js' %}"></script>
+    <script src="{% static 'Commerce/js/notify.min.js' %}"></script>
     <script src="{% static 'Commerce/js/home.js' %}"></script>
+    <script src="{% static 'Commerce/js/upperheader.js' %}"></script>
     <script src="{% static 'Commerce/js/navbar.js' %}"></script>
     <script>
 		    var csrf_token = '{{ csrf_token }}';
