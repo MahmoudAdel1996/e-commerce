@@ -109,7 +109,7 @@ def home(request):
     # if user logged in
     if 'username' in request.session:
         # get this user from database to show him on upperheader html file
-        user_login = Users.objects.get(name=request.session['username'])
+        user_login = Users.objects.get(name=request.session.get('username'))
     else:
         # if no user logged in
         user_login = None
@@ -140,7 +140,7 @@ def single_category(request, category):
     # if user logged in
     if 'username' in request.session:
         # get this user from database to show him on upperheader html file
-        user_login = Users.objects.get(name=request.session['username'])
+        user_login = Users.objects.get(name=request.session.get('username'))
     else:
         # if no user logged in
         user_login = None
@@ -165,7 +165,7 @@ def single_product(request, product_id):
     # if user logged in
     if 'username' in request.session:
         # get this user from database to show him on upperheader html file
-        user_login = Users.objects.get(name=request.session['username'])
+        user_login = Users.objects.get(name=request.session.get('username'))
     else:
         # if no user logged in
         user_login = None
@@ -197,7 +197,7 @@ def search(request):
     # if user logged in
     if 'username' in request.session:
         # get this user from database to show him on upperheader html file
-        user_login = Users.objects.get(name=request.session['username'])
+        user_login = Users.objects.get(name=request.session.get('username'))
     else:
         user_login = None
     context = {
@@ -216,7 +216,7 @@ def team(request):
     # if user logged in
     if 'username' in request.session:
         # get this user from database to show him on upperheader html file
-        user_login = Users.objects.get(name=request.session['username'])
+        user_login = Users.objects.get(name=request.session.get('username'))
     else:
         user_login = None
     context = {
@@ -233,7 +233,7 @@ def contact(request):
     # if user logged in
     if 'username' in request.session:
         # get this user from database to show him on upperheader html file
-        user_login = Users.objects.get(name=request.session['username'])
+        user_login = Users.objects.get(name=request.session.get('username'))
     else:
         user_login = None
     context = {
@@ -264,11 +264,11 @@ def add_to_cart(request, product_id):
             # copy all products of x to y
             y = list(x)
             # add all products on y to cart
-            product_on_cart[request.session['username']] = y
+            product_on_cart[request.session.get('username')] = y
             # clear all products from list x (let x is empty)
             x.clear()
             # return to Ajax function how many products on cart to show them on html pages
-            return HttpResponse(len(product_on_cart[request.session['username']]))
+            return HttpResponse(len(product_on_cart[request.session.get('username')]))
         else:
             # if user not logged in will return 'login' string to Ajax function to handel it to show alert
             return HttpResponse('login')
@@ -296,11 +296,11 @@ def delete_from_cart(request, product_id):
             # copy all products of x to y
             y = list(x)
             # add all products on y to cart
-            product_on_cart[request.session['username']] = y
+            product_on_cart[request.session.get('username')] = y
             # clear all products from list x (let x is empty)
             x.clear()
             # return to Ajax function how many products on cart to show them on html pages
-            return HttpResponse(len(product_on_cart[request.session['username']]))
+            return HttpResponse(len(product_on_cart[request.session.get('username')]))
         else:
             # if user not logged in will return 'login' string to Ajax function to handel it to show alert
             return HttpResponse('login')
@@ -314,7 +314,7 @@ def cart(request):
     # if user logged in
     if 'username' in request.session:
         # get this user from database to show him on upperheader html file
-        user_login = Users.objects.get(name=request.session['username'])
+        user_login = Users.objects.get(name=request.session.get('username'))
     else:
         user_login = None
     context = {
@@ -331,18 +331,18 @@ def cart(request):
 def buy_items(request):
     if request.method == 'POST':
         last = Invoices.objects.latest('invoice_num').invoice_num
-        products = product_on_cart[request.session['username']]
+        products = product_on_cart.get(request.session.get('username'))
 
-        if len(products) > 0:
+        if products:
             for product in products:
                 Invoices(
                     invoice_num=last+1,
-                    customer=Users.objects.get(name=request.session['username']),
+                    customer=Users.objects.get(name=request.session.get('username')),
                     status="Buy",
                     product=product,
                     quantity=1
                 ).save()
-            product_on_cart[request.session['username']] = []
+            product_on_cart[request.session.get('username')] = []
             return HttpResponse("Successful")
         else:
             return HttpResponse("Unsuccessful")
@@ -360,7 +360,7 @@ def profile(request, name):
         # get all users from database
         users = Users.objects.all()
         # get the same user already logging in
-        user_login = users.get(name=request.session['username'])
+        user_login = users.get(name=request.session.get('username'))
         # get user from database that have name = name(variable)
         other_user = users.filter(name=name)
         # if no name like this on database
@@ -396,7 +396,7 @@ def account(request):
     # if user logged in
     if 'username' in request.session:
         # get this user from database to show him on upperheader html file
-        user_login = Users.objects.get(name=request.session['username'])
+        user_login = Users.objects.get(name=request.session.get('username'))
     else:
         # go to login page "localhost:8000/login/"
         return redirect('login')
