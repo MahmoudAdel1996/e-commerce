@@ -1,8 +1,9 @@
 function delete_from_cart(entry){
     var $entry = $(entry);
     var id = $entry.data('id');
+    var quantity = $entry.data('quantity');
     $.ajax({
-        url: '/delete_from_cart/'+ id +'/',
+        url: '/delete_from_cart/'+ id +'/' + quantity +'/',
         method: 'DELETE',
         beforeSend: function(xhr){
             xhr.setRequestHeader('x-CSRFToken', csrf_token)
@@ -17,7 +18,11 @@ function delete_from_cart(entry){
         }
     })
 }
-
+$(function () {
+    var price = $("#price").html();
+    var quantity = $("#quantity span").html();
+    $("#total-price").html("$"+parseInt(price)*parseInt(quantity));
+})
 function buy(){
     $.ajax({
         url: '/cart/buy/',

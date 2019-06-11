@@ -21,19 +21,20 @@
 
         {% if products %}
 
-					{% for product in products %}
+          {% for product in products %}
           <div class="card mb-3 p-2">
             <div class="row no-gutters">
               <div class="col-5 col-md-3 m-auto" style="width: 250px">
-                <img width="100%" src="{{ product.image.url }}" class="card-img" alt="{{ product.name }}">
+                <img width="100%" src="{{ product.0.image.url }}" class="card-img" alt="{{ product.0.name }}">
               </div>
               <div class="col-7 col-md-9 m-auto">
                 <div class="card-body">
-                  <h5 class="card-title">{{ product.name }}</h5>
-                  <div class="text-info impact">Quantity: 1</div>
-                  <h4 class="text-danger impact">${{ product.price }}</h4>
 
-  		            <button onclick="delete_from_cart(this)" data-id="{{ product.id }}" type="button" class="btn btn-danger font-weight-bold"><i class="fas fa-times"></i> Remove</button>
+                  <h5 class="card-title">{{ product.0.name }}</h5>
+                  <div id="quantity" class="text-info impact">Quantity: <span>{{ product.1 }}</span></div>
+                  <h4 id="price" class="d-none">{{ product.0.price }}</h4>
+                  <h4 id="total-price" class="text-danger impact"></h4>
+                  <button onclick="delete_from_cart(this)" data-quantity="{{ product.1 }}" data-id="{{ product.0.id }}" type="button" class="btn btn-danger font-weight-bold"><i class="fas fa-times"></i> Remove</button>
 
                 </div>
               </div>
@@ -41,15 +42,15 @@
           </div>
           {% endfor %}
         {% else %}
-				<br>
+            <br>
             <h1 class="text-secondary">No Items Here</h1>
-				<br>
+            <br>
         {% endif %}
-				<div class="text-center">
-				      <br>
-								<button onclick="buy()" type="button" class="btn btn-dark font-weight-bold" style="width: 9rem;font-size: 18px;"><i class="fas fa-money-bill-alt"></i> Buy</button>
-				      <br><br>
-				</div>
+        <div class="text-center">
+              <br>
+                <button onclick="buy()" type="button" class="btn btn-dark font-weight-bold" style="width: 9rem;font-size: 18px;"><i class="fas fa-money-bill-alt"></i> Buy</button>
+              <br><br>
+        </div>
     </div>
 
     <script src="{% static 'Commerce/js/jquery-3.3.1.min.js' %}"></script>

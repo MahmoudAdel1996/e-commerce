@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from .models import Products, Category, Users, Invoices
 from django.shortcuts import HttpResponse
+
 # Create your views here.
 
 # Create variable for cart items
@@ -246,7 +247,7 @@ def contact(request):
 
 
 # when you click on add to cart button Ajax function call add_to_cart method
-def add_to_cart(request, product_id):
+def add_to_cart(request, product_id, quantity):
     # if request method is POST
     if request.method == 'POST':
         # if user logged in
@@ -260,7 +261,7 @@ def add_to_cart(request, product_id):
             except Exception as e:
                 print(e)
             # add the product you want to add it to list x
-            x.append(product)
+            x.append([product, quantity])
             # copy all products of x to y
             y = list(x)
             # add all products on y to cart
@@ -278,7 +279,7 @@ def add_to_cart(request, product_id):
 
 
 # when you click on remove from cart button Ajax function call delete_from_cart method
-def delete_from_cart(request, product_id):
+def delete_from_cart(request, product_id, quantity):
     # if request is DELETE
     if request.method == 'DELETE':
         # if user logged in
@@ -292,7 +293,7 @@ def delete_from_cart(request, product_id):
             except Exception as e:
                 print(e)
             # remove the product you want to remove it from list x
-            x.remove(product)
+            x.remove([product, quantity])
             # copy all products of x to y
             y = list(x)
             # add all products on y to cart
@@ -339,8 +340,8 @@ def buy_items(request):
                     invoice_num=last+1,
                     customer=Users.objects.get(name=request.session.get('username')),
                     status="Buy",
-                    product=product,
-                    quantity=1
+                    product=product[0],
+                    quantity=product[1]
                 ).save()
             product_on_cart[request.session.get('username')] = []
             return HttpResponse("Successful")
