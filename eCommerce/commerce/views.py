@@ -155,7 +155,17 @@ def single_category(request, category):
     else:
         # if no user logged in
         user_login = None
+
+    prods = list(Products.objects.all().order_by('id'))
+    if user_login:
+        lis = recommender(user_login.id)
+    else:
+        lis = recommender(user_login)
+    prolist1 = []
+    for i in lis[:10]:
+        prolist1.append(prods[i - 1])
     context = {
+        'recommend_product': prolist1,
         'login': user_login,
         'products': products,
         'category': categories,
@@ -211,7 +221,18 @@ def search(request):
         user_login = Users.objects.get(name=request.session.get('username'))
     else:
         user_login = None
+
+    prods = list(Products.objects.all().order_by('id'))
+    if user_login:
+        lis = recommender(user_login.id)
+    else:
+        lis = recommender(user_login)
+    prolist1 = []
+    for i in lis[:10]:
+        prolist1.append(prods[i - 1])
+
     context = {
+        'recommend_product': prolist1,
         'login': user_login,
         'products': products,
         'category': categories,
