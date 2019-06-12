@@ -116,7 +116,10 @@ def home(request):
         user_login = None
 
     prods = list(Products.objects.all().order_by('id'))
-    lis = recommender(user_login.id)
+    if user_login:
+        lis = recommender(user_login.id)
+    else:
+        lis = recommender(user_login)
     prolist1 = []
     prolist2 = []
     prolist3 = []
