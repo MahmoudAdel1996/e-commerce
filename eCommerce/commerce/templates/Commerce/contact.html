@@ -29,6 +29,11 @@
                 mahmoooud.adel@gmail.com
             </p>
         </div>
+        <div>
+            {% for lie in lis %}
+                <h1>{{ lie }} </h1><br>
+            {% endfor %}
+        </div>
     </div>
 
     <script src="{% static 'Commerce/js/jquery-3.3.1.min.js' %}"></script>

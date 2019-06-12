@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from .models import Products, Category, Users, Invoices
 from django.shortcuts import HttpResponse
-
+from .recommendation import recommender, recommender_2
 # Create your views here.
 
 # Create variable for cart items
@@ -114,7 +114,22 @@ def home(request):
     else:
         # if no user logged in
         user_login = None
+
+    prods = list(Products.objects.all().order_by('id'))
+    lis = recommender(user_login.id)
+    prolist1 = []
+    prolist2 = []
+    prolist3 = []
+    for i in lis[:4]:
+        prolist1.append(prods[i - 1])
+    for i in lis[3:7]:
+        prolist2.append(prods[i - 1])
+    for i in lis[6:10]:
+        prolist3.append(prods[i - 1])
     context = {
+        'recomend_product1': prolist1,
+        'recomend_product2': prolist2,
+        'recomend_product3': prolist3,
         'login': user_login,
         'products': products,
         'category': categories,
@@ -232,6 +247,7 @@ def team(request):
 # when you go to "localhost:8000/contact/" contact method will execute
 def contact(request):
     # if user logged in
+
     if 'username' in request.session:
         # get this user from database to show him on upperheader html file
         user_login = Users.objects.get(name=request.session.get('username'))

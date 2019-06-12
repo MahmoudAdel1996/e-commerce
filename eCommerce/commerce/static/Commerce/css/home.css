@@ -1,13 +1,16 @@
 :root {
-  --main-bg-color: #006fcc;
+  --main-bg-color: #FF8B00;
 }
 body{
-  background-color:#fafafa;
+    background-color: #fafafa;
+    font-family: "Roboto",sans-serif;
 }
 .row{
   margin: 0;
 }
-
+.container{
+    max-width: 1200px;
+}
 .main-section{
   border-radius: 5px;
   background-color: #fff;

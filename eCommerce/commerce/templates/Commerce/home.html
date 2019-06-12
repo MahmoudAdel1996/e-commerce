@@ -16,18 +16,53 @@
 
     {% include "Commerce/upperheader.html" %}
     {% include "Commerce/navbar.html" %}
-
+    <div class="container">
+        <h4>Recommended For You</h4>
+        <div id="carouselExampleControls" class="carousel slide bg-white" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    {% for product in recomend_product1 %}
+                        <img src="{{ product.image.url }}" class="col-3" alt="{{ product.name }}">
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    {% for product in recomend_product2 %}
+                        <img src="{{ product.image.url }}" class="col-3" alt="{{ product.name }}">
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    {% for product in recomend_product3 %}
+                        <img src="{{ product.image.url }}" class="col-3" alt="{{ product.name }}">
+                    {% endfor %}
+                </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+    </div>
+    <br>
     <div class="container main-section">
       <div class="row justify-content-between">
-
         <!-- aside left start -->
         <aside class="text-center text-sm-left text-md-left text-lg-left col-sm-5 col-md-4 col-lg-3 ">
           <div class="card">
             <h3 class="text-center"><i class="fas fa-bookmark"></i> Category</h3>
             <div class="form-check siz"><br>
-              <a class="card-link" href="{% url 'home' %}"> All</a><br><br>
+              <a class="card-link text-dark font-weight-bold" href="{% url 'home' %}"> All</a><br><br>
                 {% for cat in category %}
-                    <a class="card-link" href="{% url 'single_category' cat.name %}"> {{ cat.name }}</a><br><br>
+                    <a class="card-link text-dark font-weight-bold" href="{% url 'single_category' cat.name %}"> {{ cat.name }}</a><br><br>
                 {%endfor%}
             </div>
           </div>
@@ -41,10 +76,10 @@
               <div class="pagination p-4">
                   <span class="step-links m-auto">
                     {% if products.has_previous and request.GET.search %}
-                        <a class="card-link" href="?search={{ request.GET.search }}&page=1">&laquo; first</a>
+                        <a class="card-link text-dark font-weight-bold" href="?search={{ request.GET.search }}&page=1">&laquo; first</a>
                         <a class="btn btn-secondary p-1 m-2" href="?search={{ request.GET.search }}&page={{ products.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
                     {% elif products.has_previous %}
-                        <a class="card-link" href="?page=1">&laquo; first</a>
+                        <a class="card-link text-dark font-weight-bold" href="?page=1">&laquo; first</a>
                         <a class="btn btn-secondary p-1 m-2" href="?page={{ products.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
                     {% endif %}
 
@@ -53,10 +88,10 @@
                     </span>
                     {% if products.has_next and request.GET.search %}
                         <a class="btn btn-secondary p-1 m-2" href="?search={{ request.GET.search }}&page={{ products.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
-                        <a class="card-link" href="?search={{ request.GET.search }}&page={{ products.paginator.num_pages }}">last &raquo;</a>
+                        <a class="card-link text-dark font-weight-bold" href="?search={{ request.GET.search }}&page={{ products.paginator.num_pages }}">last &raquo;</a>
                     {% elif products.has_next %}
                         <a class="btn btn-secondary p-1 m-2" href="?page={{ products.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
-                        <a class="card-link" href="?page={{ products.paginator.num_pages }}">last &raquo;</a>
+                        <a class="card-link text-dark font-weight-bold" href="?page={{ products.paginator.num_pages }}">last &raquo;</a>
                     {% endif %}
                   </span>
               </div>
@@ -68,7 +103,7 @@
                     <form class="col-xs-12 col-md-6 col-lg-4 card" style="width: 18rem;"><br>
                         <img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}">
                         <div class="card-body">
-                          <h5 class="card-title"><a class="card-link" href="{% url 'single_product' product.id %}">{{ product.name|truncatechars:60 }}</a></h5>
+                          <h5 class="card-title"><a class="card-link text-dark font-weight-bold" href="{% url 'single_product' product.id %}">{{ product.name|truncatechars:60 }}</a></h5>
                           <p class="card-text">{{ product.description|truncatechars:100 }}</p>
                         </div>
                         <div class="text-center">
@@ -112,10 +147,10 @@
               <div class="pagination p-4">
                   <span class="step-links m-auto">
                     {% if products.has_previous and request.GET.search %}
-                        <a class="card-link" href="?search={{ request.GET.search }}&page=1">&laquo; first</a>
+                        <a class="card-link text-dark font-weight-bold" href="?search={{ request.GET.search }}&page=1">&laquo; first</a>
                         <a class="btn btn-secondary p-1 m-2" href="?search={{ request.GET.search }}&page={{ products.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
                     {% elif products.has_previous %}
-                        <a class="card-link" href="?page=1">&laquo; first</a>
+                        <a class="card-link text-dark font-weight-bold" href="?page=1">&laquo; first</a>
                         <a class="btn btn-secondary p-1 m-2" href="?page={{ products.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
                     {% endif %}
 
@@ -124,10 +159,10 @@
                     </span>
                     {% if products.has_next and request.GET.search %}
                         <a class="btn btn-secondary p-1 m-2" href="?search={{ request.GET.search }}&page={{ products.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
-                        <a class="card-link" href="?search={{ request.GET.search }}&page={{ products.paginator.num_pages }}">last &raquo;</a>
+                        <a class="card-link text-dark font-weight-bold" href="?search={{ request.GET.search }}&page={{ products.paginator.num_pages }}">last &raquo;</a>
                     {% elif products.has_next %}
                         <a class="btn btn-secondary p-1 m-2" href="?page={{ products.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
-                        <a class="card-link" href="?page={{ products.paginator.num_pages }}">last &raquo;</a>
+                        <a class="card-link text-dark font-weight-bold" href="?page={{ products.paginator.num_pages }}">last &raquo;</a>
                     {% endif %}
                   </span>
               </div>
