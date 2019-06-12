@@ -27,8 +27,12 @@ $( document ).ready(function(){
     var swiper = new Swiper('.swiper-container', {
       grabCursor: true,
       centeredSlides: true,
-      slidesPerView: 'auto',
+      slidesPerView: '5',
       loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
       pagination: {
         el: '.swiper-pagination',
         clickable: true
