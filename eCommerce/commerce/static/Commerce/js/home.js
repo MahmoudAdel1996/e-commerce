@@ -23,5 +23,19 @@ function add_to_cart(entry){
 
 $( document ).ready(function(){
     $("nav ul li:first-child a").addClass('active');
-
+    // install swiper
+    var swiper = new Swiper('.swiper-container', {
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      }
+    });
 });

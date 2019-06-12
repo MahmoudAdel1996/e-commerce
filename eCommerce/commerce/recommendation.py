@@ -14,7 +14,7 @@ Sales = Sales.drop('quantity', axis=1)
 
 def recommender_2():
     # top sales products recommendation
-    sales_count = Sales.groupby(['product_id'], as_index=False, sort=False).sum()[['product_id', 'Quantity_count']]
+    sales_count = Sales.groupby(['product_id'], as_index=False, sort=False).sum()[['product_id', 'Total_Quantity']]
     sales_count = sales_count.sort_values('Total_Quantity', ascending=False)
     sales_count = sales_count.drop('Total_Quantity', axis=1)
     return list(sales_count['product_id'])

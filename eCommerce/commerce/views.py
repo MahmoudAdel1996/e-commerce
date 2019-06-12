@@ -121,18 +121,10 @@ def home(request):
     else:
         lis = recommender(user_login)
     prolist1 = []
-    prolist2 = []
-    prolist3 = []
-    for i in lis[:4]:
+    for i in lis[:10]:
         prolist1.append(prods[i - 1])
-    for i in lis[3:7]:
-        prolist2.append(prods[i - 1])
-    for i in lis[6:10]:
-        prolist3.append(prods[i - 1])
     context = {
-        'recomend_product1': prolist1,
-        'recomend_product2': prolist2,
-        'recomend_product3': prolist3,
+        'recommend_product': prolist1,
         'login': user_login,
         'products': products,
         'category': categories,

@@ -11,45 +11,29 @@
     <link rel="stylesheet" href="{% static 'Commerce/css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'Commerce/css/home.css' %}">
     <link rel="stylesheet" href="{% static 'Commerce/css/upperheader.css' %}">
+    <link rel="stylesheet" href="{% static 'Commerce/css/swiper.min.css' %}">
 </head>
 <body>
 
     {% include "Commerce/upperheader.html" %}
     {% include "Commerce/navbar.html" %}
-    <div class="container">
-        <h4>Recommended For You</h4>
-        <div id="carouselExampleControls" class="carousel slide bg-white" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="row">
-                    {% for product in recomend_product1 %}
-                        <img src="{{ product.image.url }}" class="col-3" alt="{{ product.name }}">
-                    {% endfor %}
+    <div class="container bg-white">
+        <h4 class="p-2">Recommended For You</h4>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {% for product in recommend_product %}
+                <div class="swiper-slide text-cente">
+                    <img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}">
+                    <div class="card-body">
+                      <p class="text-dark font-weight-bold"><a class="card-link text-dark" href="{% url 'single_product' product.id %}">{{ product.name|truncatechars:50 }}</a></p>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
-            <div class="carousel-item">
-                <div class="row">
-                    {% for product in recomend_product2 %}
-                        <img src="{{ product.image.url }}" class="col-3" alt="{{ product.name }}">
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="row">
-                    {% for product in recomend_product3 %}
-                        <img src="{{ product.image.url }}" class="col-3" alt="{{ product.name }}">
-                    {% endfor %}
-                </div>
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </div>
     <br>
@@ -77,20 +61,20 @@
                   <span class="step-links m-auto">
                     {% if products.has_previous and request.GET.search %}
                         <a class="card-link text-dark font-weight-bold" href="?search={{ request.GET.search }}&page=1">&laquo; first</a>
-                        <a class="btn btn-secondary p-1 m-2" href="?search={{ request.GET.search }}&page={{ products.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
+                        <a class="btn btn-secondary p-1 m-2" style="background-color: #FF8B00;" href="?search={{ request.GET.search }}&page={{ products.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
                     {% elif products.has_previous %}
                         <a class="card-link text-dark font-weight-bold" href="?page=1">&laquo; first</a>
-                        <a class="btn btn-secondary p-1 m-2" href="?page={{ products.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
+                        <a class="btn btn-secondary p-1 m-2" style="background-color: #FF8B00;" href="?page={{ products.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
                     {% endif %}
 
                     <span class="current">
                         Page {{ products.number }} of {{ products.paginator.num_pages }}
                     </span>
                     {% if products.has_next and request.GET.search %}
-                        <a class="btn btn-secondary p-1 m-2" href="?search={{ request.GET.search }}&page={{ products.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
+                        <a class="btn btn-secondary p-1 m-2" style="background-color: #FF8B00;" href="?search={{ request.GET.search }}&page={{ products.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
                         <a class="card-link text-dark font-weight-bold" href="?search={{ request.GET.search }}&page={{ products.paginator.num_pages }}">last &raquo;</a>
                     {% elif products.has_next %}
-                        <a class="btn btn-secondary p-1 m-2" href="?page={{ products.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
+                        <a class="btn btn-secondary p-1 m-2" style="background-color: #FF8B00;" href="?page={{ products.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
                         <a class="card-link text-dark font-weight-bold" href="?page={{ products.paginator.num_pages }}">last &raquo;</a>
                     {% endif %}
                   </span>
@@ -148,20 +132,20 @@
                   <span class="step-links m-auto">
                     {% if products.has_previous and request.GET.search %}
                         <a class="card-link text-dark font-weight-bold" href="?search={{ request.GET.search }}&page=1">&laquo; first</a>
-                        <a class="btn btn-secondary p-1 m-2" href="?search={{ request.GET.search }}&page={{ products.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
+                        <a class="btn btn-secondary p-1 m-2" style="background-color: #FF8B00;" href="?search={{ request.GET.search }}&page={{ products.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
                     {% elif products.has_previous %}
                         <a class="card-link text-dark font-weight-bold" href="?page=1">&laquo; first</a>
-                        <a class="btn btn-secondary p-1 m-2" href="?page={{ products.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
+                        <a class="btn btn-secondary p-1 m-2" style="background-color: #FF8B00;" href="?page={{ products.previous_page_number }}"><i class="fas fa-arrow-circle-left"></i></a>
                     {% endif %}
 
                     <span class="current">
                         Page {{ products.number }} of {{ products.paginator.num_pages }}
                     </span>
                     {% if products.has_next and request.GET.search %}
-                        <a class="btn btn-secondary p-1 m-2" href="?search={{ request.GET.search }}&page={{ products.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
+                        <a class="btn btn-secondary p-1 m-2" style="background-color: #FF8B00;" href="?search={{ request.GET.search }}&page={{ products.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
                         <a class="card-link text-dark font-weight-bold" href="?search={{ request.GET.search }}&page={{ products.paginator.num_pages }}">last &raquo;</a>
                     {% elif products.has_next %}
-                        <a class="btn btn-secondary p-1 m-2" href="?page={{ products.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
+                        <a class="btn btn-secondary p-1 m-2" style="background-color: #FF8B00;" href="?page={{ products.next_page_number }}"><i class="fas fa-arrow-circle-right"></i></a>
                         <a class="card-link text-dark font-weight-bold" href="?page={{ products.paginator.num_pages }}">last &raquo;</a>
                     {% endif %}
                   </span>
@@ -187,9 +171,10 @@
     <script src="{% static 'Commerce/js/jquery.nicescroll.min.js' %}"></script>
     <script src="{% static 'Commerce/js/scroll.js' %}"></script>
     <script src="{% static 'Commerce/js/notify.min.js' %}"></script>
-    <script src="{% static 'Commerce/js/home.js' %}"></script>
     <script src="{% static 'Commerce/js/upperheader.js' %}"></script>
     <script src="{% static 'Commerce/js/navbar.js' %}"></script>
+    <script src="{% static 'Commerce/js/swiper.min.js' %}"></script>
+    <script src="{% static 'Commerce/js/home.js' %}"></script>
     <script>
 		    var csrf_token = '{{ csrf_token }}';
     </script>
