@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="col-md-9">
                                   <div class="card-body">
-                                    <h5 class="card-title"><a class="card-link" href="{% url 'single_product' product.product.id %}">{{ product.product.name }}</a></h5>
+                                    <h5 class="card-title"><a class="card-link text-dark font-weight-bold" href="{% url 'single_product' product.product.id %}">{{ product.product.name }}</a></h5>
                                     <div class="text-info" style="font-family: Impact;">Quantity: {{ product.quantity }}</div>
                                     <div class="text-danger" style="font-family: Impact;">${{ product.total_price }}</div>
                                     <div class="card-text" style="font-family: Impact;"><small class="text-muted">{{ product.date_time }}</small></div>

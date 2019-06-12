@@ -73,11 +73,12 @@ footer{
     }
 }
 
+ /*for slider*/
 .swiper-container {
       width: 100%;
       padding-top: 50px;
       padding-bottom: 50px;
-    }
+}
 
 .swiper-slide {
   background-position: center;

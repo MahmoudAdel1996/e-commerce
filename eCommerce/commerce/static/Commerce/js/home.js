@@ -23,7 +23,7 @@ function add_to_cart(entry){
 
 $( document ).ready(function(){
     $("nav ul li:first-child a").addClass('active');
-    // install swiper
+    // install swiper for slider
     var swiper = new Swiper('.swiper-container', {
       grabCursor: true,
       centeredSlides: true,

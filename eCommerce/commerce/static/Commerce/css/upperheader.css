@@ -8,7 +8,8 @@
     box-sizing: border-box;
 }
 .btn-primary,
-.bg-primary{
+.bg-primary,
+.dropdown-item:active{
   background-color: var(--main-bg-color) !important;
   border: 1px solid var(--main-bg-color);
 }
