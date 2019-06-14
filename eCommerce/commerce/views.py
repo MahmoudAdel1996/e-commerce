@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from .models import Products, Category, Users, Invoices
 from django.shortcuts import HttpResponse
-from .recommendation import recommender, recommender_2
+from .recommendation import recommender_2
+from copy import copy
 # Create your views here.
 
 # Create variable for cart items
@@ -44,7 +45,7 @@ def login(request):
 # when you go to "localhost:8000/signup/" register method will execute
 def register(request):
     # get last id from Users table on database
-    last = Users.objects.latest('id')
+    last = copy(Users.objects.latest('id'))
     # if request method is POST
     if request.method == 'POST':
         # get username from signup html page and convert all words to Capitalize
@@ -100,9 +101,9 @@ def logout(request):
 # when you go to "localhost:8000/" home method will execute
 def home(request):
     # get all products from database
-    items = Products.objects.all()
+    items = copy(Products.objects.all())
     # get all categories from database
-    categories = Category.objects.all()
+    categories = copy(Category.objects.all())
     # to show only 51 product every page and show pages number
     paginator = Paginator(items, 51)
     page = request.GET.get('page')
@@ -140,11 +141,11 @@ def home(request):
 # when you click on specific category, single_category method will execute
 def single_category(request, category):
     # get all categories from database
-    categories = Category.objects.all()
+    categories = copy(Category.objects.all())
     # get specific category from database
-    catalog_name = Category.objects.get(name=category)
+    catalog_name = copy(Category.objects.get(name=category))
     # get all products that have the category = category_name
-    items = Products.objects.filter(category=catalog_name.id)
+    items = copy(Products.objects.filter(category=catalog_name.id))
     # to show only 51 product every page and show pages number
     paginator = Paginator(items, 51)
     page = request.GET.get('page')
@@ -206,11 +207,11 @@ def single_product(request, product_id):
 # when you click on search icon search method will execute
 def search(request):
     # get all categories from database
-    categories = Category.objects.all()
+    categories = copy(Category.objects.all())
     # get text from search box on html page
     search_name = request.GET.get("search")
     # get all products from database
-    pro = Products.objects.all()
+    pro = copy(Products.objects.all())
     # search for products that have name contain search_name text
     items = pro.filter(name__icontains=search_name)
     # to show only 51 product every page and show pages number
