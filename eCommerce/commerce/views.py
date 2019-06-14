@@ -116,10 +116,11 @@ def home(request):
         user_login = None
 
     prods = list(Products.objects.all().order_by('id'))
-    if user_login:
-        lis = recommender(user_login.id)
-    else:
-        lis = recommender(user_login)
+    # if user_login:
+    #     lis = recommender(user_login.id)
+    # else:
+    #     lis = recommender(user_login)
+    lis = recommender_2()
     prolist1 = []
     for i in lis[:10]:
         prolist1.append(prods[i - 1])
@@ -157,10 +158,11 @@ def single_category(request, category):
         user_login = None
 
     prods = list(Products.objects.all().order_by('id'))
-    if user_login:
-        lis = recommender(user_login.id)
-    else:
-        lis = recommender(user_login)
+    # if user_login:
+    #     lis = recommender(user_login.id)
+    # else:
+    #     lis = recommender(user_login)
+    lis = recommender_2()
     prolist1 = []
     for i in lis[:10]:
         prolist1.append(prods[i - 1])
@@ -223,10 +225,11 @@ def search(request):
         user_login = None
 
     prods = list(Products.objects.all().order_by('id'))
-    if user_login:
-        lis = recommender(user_login.id)
-    else:
-        lis = recommender(user_login)
+    # if user_login:
+    #     lis = recommender(user_login.id)
+    # else:
+    #     lis = recommender(user_login)
+    lis = recommender_2()
     prolist1 = []
     for i in lis[:10]:
         prolist1.append(prods[i - 1])

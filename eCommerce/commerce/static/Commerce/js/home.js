@@ -31,7 +31,7 @@ $( document ).ready(function(){
       loop: true,
       autoplay: {
         delay: 2500,
-        disableOnInteraction: false,
+        disableOnInteraction: false
       },
       pagination: {
         el: '.swiper-pagination',
