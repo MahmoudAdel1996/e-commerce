@@ -405,17 +405,20 @@ def profile(request, name):
         other_user = users.filter(name=name)
         # if no name like this on database
         if not other_user:
-            # go to error page "localhost:8000/404/"
-            return redirect('error_page')
+            # go to error page
+            return render(request, 'commerce/404.html')
         # if found name on database then get him
         other_user = users.get(name=name)
         # get last 10 invoices of this user from database, order_by date_time
-        history_of_user = Invoices.objects.filter(
-            customer=other_user.id
-        ).order_by('-date_time')[:10]
-        # if no invoices of this user
-        if not history_of_user:
-            history_of_user = None
+        if other_user.show_history or user_login.id == other_user.id:
+            history_of_user = Invoices.objects.filter(
+                customer=other_user.id
+            ).order_by('-date_time')[:10]
+            # if no invoices of this user
+            if not history_of_user:
+                history_of_user = None
+        else:
+            history_of_user = False
     else:
         # if user not logged in
         return redirect('login')
@@ -457,6 +460,11 @@ def account(request):
         user_login.phone = request.POST.get('phone')
         # edit country of the user to new country on country box on html page
         user_login.country = request.POST.get('country')
+        # edit privacy of the user as in checkbox on html page
+        if request.POST.get('show_history'):
+            user_login.show_history = request.POST.get('show_history')
+        else:
+            user_login.show_history = True
         # save all changes to database (commit changes)
         user_login.save()
     # go to account page "localhost:8000/account/"

@@ -50,7 +50,7 @@
             <input name="country" value="{{login.country}}" type="text" class="form-control" placeholder="country">
           </div>
           <div id="privacy" class="form-group" style="cursor: default">
-            <input name="country" type="checkbox" class="form-check-inline" placeholder="country">Hide History Of Invoices From Profile From Other Users
+            <input value="False" name="show_history" type="checkbox" class="form-check-inline">Hide History Of Invoices From Profile From Other Users
           </div>
           <button type="submit" class="btn btn-primary">Save</button>
         </form>
@@ -67,14 +67,23 @@
 
     <script>
         $('option[value="{{login.gender}}"]').attr('selected','True');
-        $('#privacy').click(function () {
+        var $privacy = $('#privacy');
+        var show_history = "{{ login.show_history }}";
+        // for let user to easy to click on checkbox not only the box also behind it
+        $privacy.click(function () {
             var x = $(this).children();
             if (x.is(':checked')) {
                 x.removeAttr('checked');
             }else {
                 x.attr('checked','checked');
             }
-        })
+        });
+        if(show_history === "False"){
+            $privacy.children().attr('checked','checked');
+        }else {
+            $privacy.children().removeAttr('checked');
+        }
+
     </script>
 </body>
 </html>

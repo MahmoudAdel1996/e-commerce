@@ -12,6 +12,7 @@ class Users(models.Model):
     age = models.IntegerField(null=True)
     phone = models.CharField(max_length=15, null=True)
     country = models.CharField(max_length=100, null=True)
+    show_history = models.BooleanField(default=True)
 
     # edit table name on admin site
     class Meta:
@@ -19,7 +20,7 @@ class Users(models.Model):
 
     # show string format on admin site inside the table
     def __str__(self):
-        return self.name + " | " + self.gender + " | " + self.country + " | " + self.phone
+        return self.name
 
 
 # create table name commerce_products on database
@@ -48,7 +49,7 @@ class Category(models.Model):
 
     # edit table name on admin site
     class Meta:
-        verbose_name_plural = "Category"
+        verbose_name_plural = "Categories"
 
     # show string format on admin site inside the table
     def __str__(self):

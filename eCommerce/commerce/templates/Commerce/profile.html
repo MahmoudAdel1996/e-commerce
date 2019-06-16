@@ -64,8 +64,10 @@
                               </div>
                             </div>
                         {% endfor %}
-                    {% else %}
+                    {% elif products == None %}
                         <p class="text-center p-2 text-secondary">{{ other_user.name }} doesn't have any history</p>
+                    {% elif products == False %}
+                        <p class="text-center p-2 text-secondary">History of {{ other_user.name }} is hidden by him</p>
                     {% endif %}
                 </div>
             </div>
