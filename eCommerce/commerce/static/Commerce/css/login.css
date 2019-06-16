@@ -15,7 +15,7 @@ body{
     border-radius: 10px;
 }
 .box h2{
-    margin: 0;
+    margin: 0 0 8px 0;
     padding: 0;
     color: #fff;
     text-align: center;
@@ -25,8 +25,8 @@ body{
 }
 .box .inputBox input{
     width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
+    padding: 5px 2px;
+    font-size: 15px;
     color: #fff;
     margin-bottom: 30px;
     border: none;
@@ -48,9 +48,9 @@ body{
 }
 .box .inputBox input:focus ~ label,
 .box .inputBox input:valid ~ label{
-    top: -18px;
+    top: -26px;
     left: 0;
-    color: #03a9f4;
+    color: #FF8B00;
     font-size: 12px;
 
 }
@@ -59,4 +59,12 @@ body{
     text-align: center;
     text-decoration: none;
     font-size: 14px
+}
+.btn-primary{
+    background-color: #FF8B00;
+    border-color: #FF8B00;
+}
+.btn-primary:hover,
+.btn-primary:active{
+    background-color: #FF6B00;
 }

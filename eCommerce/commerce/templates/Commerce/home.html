@@ -19,13 +19,14 @@
     {% include "Commerce/navbar.html" %}
     <div class="container bg-white main-section">
         <h4 class="p-2">Best Sellers</h4>
-        <div class="swiper-container">
+        <div id="mak" class="swiper-container">
             <div class="swiper-wrapper">
                 {% for product in recommend_product %}
                 <div class="swiper-slide text-cente">
                     <img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}">
                     <div class="card-body">
-                      <p class="text-dark font-weight-bold"><a class="card-link text-dark" href="{% url 'single_product' product.id %}">{{ product.name|truncatechars:50 }}</a></p>
+                      <div class="text-dark font-weight-bold text-center"><a class="card-link text-dark" href="{% url 'single_product' product.id %}">{{ product.name|truncatechars:25 }}</a></div>
+                      <div class="text-center"><a class="card-link text-danger impact" href="{% url 'single_product' product.id %}">${{ product.price }}</a></div>
                     </div>
                 </div>
                 {% endfor %}

@@ -182,8 +182,11 @@ def single_category(request, category):
 # path to single category "localhost:8000/product/[productId]/"
 # when you click on specific product, single_product method will execute
 def single_product(request, product_id):
-    # get specific product from database
-    product = Products.objects.get(id=product_id)
+    try:
+        # get specific product from database
+        product = Products.objects.get(id=product_id)
+    except:
+        return render(request, 'commerce/404.html')
     # get last 10 invoices that's happened on specific product
     invoices = Invoices.objects.filter(product_id=product_id)[:10]
     # if user logged in

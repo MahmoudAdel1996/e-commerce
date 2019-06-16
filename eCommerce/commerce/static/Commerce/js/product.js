@@ -1,8 +1,9 @@
 function add_to_cart(entry){
     var $entry = $(entry);
     var id = $entry.data('id');
+    var quantity = $entry.parent().prev().children("input").val()
     $.ajax({
-        url: '/add_to_cart/'+ id +'/',
+        url: '/add_to_cart/'+ id +'/' + quantity + "/",
         method: 'POST',
         beforeSend: function(xhr){
             xhr.setRequestHeader('x-CSRFToken', csrf_token)

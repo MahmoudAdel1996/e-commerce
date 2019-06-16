@@ -49,9 +49,13 @@
             <label>Country</label>
             <input name="country" value="{{login.country}}" type="text" class="form-control" placeholder="country">
           </div>
+          <div id="privacy" class="form-group" style="cursor: default">
+            <input name="country" type="checkbox" class="form-check-inline" placeholder="country">Hide History Of Invoices From Profile From Other Users
+          </div>
           <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
+    <br>
 
     <script src="{% static 'Commerce/js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'Commerce/js/popper.min.js' %}"></script>
@@ -63,6 +67,14 @@
 
     <script>
         $('option[value="{{login.gender}}"]').attr('selected','True');
+        $('#privacy').click(function () {
+            var x = $(this).children();
+            if (x.is(':checked')) {
+                x.removeAttr('checked');
+            }else {
+                x.attr('checked','checked');
+            }
+        })
     </script>
 </body>
 </html>
