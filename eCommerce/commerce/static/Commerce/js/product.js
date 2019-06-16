@@ -1,7 +1,7 @@
 function add_to_cart(entry){
     var $entry = $(entry);
     var id = $entry.data('id');
-    var quantity = $entry.parent().prev().children("input").val()
+    var quantity = $entry.parent().prev().children("input").val();
     $.ajax({
         url: '/add_to_cart/'+ id +'/' + quantity + "/",
         method: 'POST',
@@ -16,7 +16,6 @@ function add_to_cart(entry){
                 $('#lenCard').text(data);
                 $.notify("This product added to cart successfully", "success");
             }
-
         }
     })
 }
