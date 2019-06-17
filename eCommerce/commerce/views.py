@@ -143,7 +143,9 @@ def single_category(request, category):
     # get all categories from database
     categories = copy(Category.objects.all())
     # get specific category from database
-    catalog_name = copy(Category.objects.get(name=category))
+    catalog_name = copy(Category.objects.filter(name=category))
+    if not catalog_name:
+        return render(request, 'Commerce/404.html')
     # get all products that have the category = category_name
     items = copy(Products.objects.filter(category=catalog_name.id))
     # to show only 51 product every page and show pages number
@@ -474,4 +476,4 @@ def account(request):
 # when you go to "localhost:8000/404/" error_page method will execute
 def error_page(request):
     # go to error page "localhost:8000/404/"
-    return render(request, 'commerce/404.html')
+    return render(request, 'Commerce/404.html')
