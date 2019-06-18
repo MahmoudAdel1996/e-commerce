@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from .models import Products, Category, Users, Invoices
 from django.shortcuts import HttpResponse
-from .recommendation import recommender_2
+from .recommendation import recommender, recommender_2, products_recommender
 from copy import copy
+from threading import Thread
+from queue import Queue
 # Create your views here.
 
 # Create variable for cart items
@@ -115,12 +117,16 @@ def home(request):
     else:
         # if no user logged in
         user_login = None
-
     prods = list(Products.objects.all().order_by('id'))
+
+
     # if user_login:
-    #     lis = recommender(user_login.id)
+    #     thread = Thread(recommender, args=(user_login.id,))
     # else:
-    #     lis = recommender(user_login)
+    #     thread = Thread(recommender, args=(user_login.id,))
+    # thread.start()
+    # thread.join()
+
     lis = recommender_2()
     prolist1 = []
     for i in lis[:10]:
@@ -143,7 +149,7 @@ def single_category(request, category):
     # get all categories from database
     categories = copy(Category.objects.all())
     # get specific category from database
-    catalog_name = copy(Category.objects.filter(name=category))
+    catalog_name = copy(Category.objects.get(name=category))
     if not catalog_name:
         return render(request, 'Commerce/404.html')
     # get all products that have the category = category_name
@@ -165,6 +171,7 @@ def single_category(request, category):
     #     lis = recommender(user_login.id)
     # else:
     #     lis = recommender(user_login)
+
     lis = recommender_2()
     prolist1 = []
     for i in lis[:10]:
@@ -184,9 +191,10 @@ def single_category(request, category):
 # path to single category "localhost:8000/product/[productId]/"
 # when you click on specific product, single_product method will execute
 def single_product(request, product_id):
+    prods = copy(Products.objects.all().order_by('id'))
     try:
         # get specific product from database
-        product = Products.objects.get(id=product_id)
+        product = prods.get(id=product_id)
     except:
         return render(request, 'commerce/404.html')
     # get last 10 invoices that's happened on specific product
@@ -198,7 +206,16 @@ def single_product(request, product_id):
     else:
         # if no user logged in
         user_login = None
+    prods = prods.filter(category=product.category)
+    map = {}
+    for idx, val in enumerate(prods):
+        map[val.id] = idx
+    lis = products_recommender(prods, map.get(product.id))
+    prolist1 = []
+    for i in lis:
+        prolist1.append(prods[i-1])
     context = {
+        'recommend_product': prolist1,
         'login': user_login,
         'product': product,
         'invoices': invoices,

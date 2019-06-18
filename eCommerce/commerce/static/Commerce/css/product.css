@@ -1,3 +1,29 @@
 .row{
     margin: 0
 }
+ /*for slider*/
+.swiper-container {
+      width: 100%;
+      padding-top: 50px;
+      padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 250px !important;
+  height: 320px !important;
+}
+
+.swiper-button-next{
+    background-image: url("../image/right-arrow.svg") !important;
+    background-color: rgba(0,0,0,0.1);
+    width: 30px !important;
+    height: 80px !important;
+}
+.swiper-button-prev{
+    background-image: url("../image/back.svg") !important;
+    background-color: rgba(0,0,0,0.1);
+    width: 30px !important;
+    height: 80px !important;
+}

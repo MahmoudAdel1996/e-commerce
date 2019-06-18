@@ -1,7 +1,10 @@
 import pandas as pd
 import numpy as np
 from scipy.sparse.linalg import svds
-from .models import Invoices
+from .models import Invoices, Products
+from rake_nltk import Rake
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Sales = pd.read_excel('train.xlsx')
 # Products = pd.read_excel('Products.xlsx')
@@ -40,3 +43,49 @@ def recommender(user_id, n=10):
     recommendation = recommendation.to_frame()
 
     return list(recommendation.T.columns.values)
+
+
+def products_recommender(products, product_id=1):
+    df = pd.DataFrame(list(products.values()))
+
+    # initializing the new column
+    df['Key_words'] = ""
+    x = []
+    for index, row in df.iterrows():
+        product_name = row['name']
+        # instantiating Rake, by default is uses english stopwords from NLTK
+        r = Rake()
+
+        # extracting the words by passing the text
+        r.extract_keywords_from_text(product_name)
+
+        # getting the dictionary whith key words and their scores
+        key_words_dict_scores = r.get_word_degrees()
+
+        # assigning the key words to the new column
+        row['Key_words'] = list(key_words_dict_scores.keys())
+        str1 = ' '.join(row['Key_words'])
+        x.append(str1)
+
+    df['Key_words'] = x
+
+    count = TfidfVectorizer()
+    count_matrix = count.fit_transform(df['Key_words'])
+    # generating the cosine similarity matrix
+    cosine_sim = cosine_similarity(count_matrix, count_matrix)
+
+    # function that takes in movie title as input and returns the top 10 recommended movies
+
+    recommended_movies = []
+
+    # creating a Series with the similarity scores in descending order
+    score_series = pd.Series(cosine_sim[product_id]).sort_values(ascending=False)
+
+    # getting the indexes of the 10 most similar movies
+    top_10_indexes = list(score_series.iloc[1:11].index)
+
+    # populating the list with the titles of the best 10 matching movies
+    for i in top_10_indexes:
+        recommended_movies.append(list(df.index)[i+1]+1)
+    print(recommended_movies)
+    return recommended_movies

@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="{% static 'Commerce/css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'Commerce/css/upperheader.css' %}">
     <link rel="stylesheet" href="{% static 'Commerce/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'Commerce/css/swiper.min.css' %}">
     <link rel="stylesheet" href="{% static 'Commerce/css/product.css' %}">
+
 </head>
 <body>
 
@@ -31,6 +33,29 @@
             <br>
             <hr>
         </div>
+
+        <div class="container bg-white main-section">
+            <h4 class="p-2">Similar Products</h4>
+            <div id="mak" class="swiper-container">
+                <div class="swiper-wrapper">
+                    {% for product in recommend_product %}
+                    <div class="swiper-slide text-cente">
+                        <img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}">
+                        <div class="card-body">
+                          <div class="text-dark font-weight-bold text-center"><a class="card-link text-dark" href="{% url 'single_product' product.id %}">{{ product.name|truncatechars:25 }}</a></div>
+                          <div class="text-center"><a class="card-link text-danger impact" href="{% url 'single_product' product.id %}">${{ product.price }}</a></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+        <br>
+
         <div class="container">
             <h3 class="text-secondary p-4">Users Buy This Product</h3>
             {% if invoices %}
@@ -97,6 +122,7 @@
     <script src="{% static 'Commerce/js/notify.min.js' %}"></script>
     <script src="{% static 'Commerce/js/upperheader.js' %}"></script>
     <script src="{% static 'Commerce/js/navbar.js' %}"></script>
+    <script src="{% static 'Commerce/js/swiper.min.js' %}"></script>
     <script src="{% static 'Commerce/js/product.js' %}"></script>
     <script>
 		    var csrf_token = '{{ csrf_token }}';

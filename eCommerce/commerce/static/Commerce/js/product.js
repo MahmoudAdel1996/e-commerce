@@ -17,5 +17,25 @@ function add_to_cart(entry){
                 $.notify("This product added to cart successfully", "success");
             }
         }
-    })
+    });
 }
+$(function () {
+    var swiper = new Swiper('.swiper-container', {
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: '5',
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      }
+    });
+});
