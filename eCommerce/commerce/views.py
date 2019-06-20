@@ -2,10 +2,10 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from .models import Products, Category, Users, Invoices
 from django.shortcuts import HttpResponse
-from .recommendation import recommender, recommender_2, products_recommender
+from .recommendation import recommender_2, products_recommender  # , recommender
 from copy import copy
-from threading import Thread
-from queue import Queue
+
+# from multiprocessing.pool import ThreadPool
 # Create your views here.
 
 # Create variable for cart items
@@ -119,13 +119,9 @@ def home(request):
         user_login = None
     prods = list(Products.objects.all().order_by('id'))
 
-
-    # if user_login:
-    #     thread = Thread(recommender, args=(user_login.id,))
-    # else:
-    #     thread = Thread(recommender, args=(user_login.id,))
-    # thread.start()
-    # thread.join()
+    # pool = ThreadPool(processes=1)
+    # async_result = pool.apply_async(recommender, (user_login.id,))
+    # lis = async_result.get()
 
     lis = recommender_2()
     prolist1 = []
@@ -143,17 +139,18 @@ def home(request):
     return render(request, 'Commerce/home.html', context=context)
 
 
-# path to single category "localhost:8000/[categoryName]/"
+# path to single category "localhost:8000/category/[categoryName]/"
 # when you click on specific category, single_category method will execute
 def single_category(request, category):
     # get all categories from database
     categories = copy(Category.objects.all())
     # get specific category from database
-    catalog_name = copy(Category.objects.get(name=category))
+    catalog_name = categories.get(name=category)
     if not catalog_name:
         return render(request, 'Commerce/404.html')
     # get all products that have the category = category_name
-    items = copy(Products.objects.filter(category=catalog_name.id))
+    all_products = copy(Products.objects.all())
+    items = all_products.filter(category=catalog_name.id)
     # to show only 51 product every page and show pages number
     paginator = Paginator(items, 51)
     page = request.GET.get('page')
@@ -171,7 +168,6 @@ def single_category(request, category):
     #     lis = recommender(user_login.id)
     # else:
     #     lis = recommender(user_login)
-
     lis = recommender_2()
     prolist1 = []
     for i in lis[:10]:
@@ -180,6 +176,7 @@ def single_category(request, category):
         'recommend_product': prolist1,
         'login': user_login,
         'products': products,
+        'items': x,
         'category': categories,
         # get how many products on cart if no products will return length empty list = 0
         'lenCard': len(product_on_cart.get(request.session.get('username'), []))
@@ -195,8 +192,11 @@ def single_product(request, product_id):
     try:
         # get specific product from database
         product = prods.get(id=product_id)
-    except:
+    except Products.DoesNotExist:
         return render(request, 'commerce/404.html')
+    except ValueError:
+        return render(request, 'commerce/404.html')
+
     # get last 10 invoices that's happened on specific product
     invoices = Invoices.objects.filter(product_id=product_id)[:10]
     # if user logged in
@@ -207,10 +207,10 @@ def single_product(request, product_id):
         # if no user logged in
         user_login = None
     prods = prods.filter(category=product.category)
-    map = {}
+    map_id = {}
     for idx, val in enumerate(prods):
-        map[val.id] = idx
-    lis = products_recommender(prods, map.get(product.id))
+        map_id[val.id] = idx
+    lis = products_recommender(prods, map_id.get(product.id))
     prolist1 = []
     for i in lis:
         prolist1.append(prods[i-1])

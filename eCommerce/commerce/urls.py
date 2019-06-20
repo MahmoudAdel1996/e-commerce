@@ -17,5 +17,5 @@ urlpatterns = [
     path('cart/buy/', views.buy_items, name='buy'),
     path('404/', views.error_page, name='error_page'),
     path('search/', views.search, name='search'),
-    path('<category>/', views.single_category, name='single_category'),
+    path('category/<category>/', views.single_category, name='single_category'),
 ]

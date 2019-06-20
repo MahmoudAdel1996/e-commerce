@@ -1,4 +1,6 @@
-<!DOCTYPE html>{% load static %}
+{% load poll_extras %}
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -22,12 +24,14 @@
         <div id="mak" class="swiper-container">
             <div class="swiper-wrapper">
                 {% for product in recommend_product %}
-                <div class="swiper-slide text-cente">
-                    <img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}">
-                    <div class="card-body">
-                      <div class="text-dark font-weight-bold text-center"><a class="card-link text-dark" href="{% url 'single_product' product.id %}">{{ product.name|truncatechars:25 }}</a></div>
-                      <div class="text-center"><a class="card-link text-danger impact" href="{% url 'single_product' product.id %}">${{ product.price }}</a></div>
-                    </div>
+                <div class="swiper-slide text-center">
+                    <a class="card-link" href="{% url 'single_product' product.id %}">
+                        <img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}">
+                        <div class="card-body">
+                          <div class="text-dark font-weight-bold text-center">{{ product.name|truncatechars:25 }}</div>
+                          <div class="text-center text-danger impact">${{ product.price }}</div>
+                        </div>
+                    </a>
                 </div>
                 {% endfor %}
             </div>
@@ -45,9 +49,13 @@
           <div class="card">
             <h3 class="text-center"><i class="fas fa-bookmark"></i> Category</h3>
             <div class="form-check siz"><br>
-              <a class="card-link text-dark font-weight-bold" href="{% url 'home' %}"> All</a><br><br>
+                <a class="card-link text-dark font-weight-bold" href="{% url 'home' %}"> All</a>
+                <span class="badge badge-secondary float-right mr-2">{% total_products %}</span>
+                <br><br>
                 {% for cat in category %}
-                    <a class="card-link text-dark font-weight-bold" href="{% url 'single_category' cat.name %}"> {{ cat.name }}</a><br><br>
+                    <a class="card-link text-dark font-weight-bold" href="{% url 'single_category' cat.name %}"> {{ cat.name }}</a>
+                    <span class="badge badge-secondary float-right mr-2">{% category_products cat.id %}</span>
+                    <br><br>
                 {%endfor%}
             </div>
           </div>

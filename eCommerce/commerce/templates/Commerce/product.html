@@ -39,12 +39,14 @@
             <div id="mak" class="swiper-container">
                 <div class="swiper-wrapper">
                     {% for product in recommend_product %}
-                    <div class="swiper-slide text-cente">
-                        <img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}">
-                        <div class="card-body">
-                          <div class="text-dark font-weight-bold text-center"><a class="card-link text-dark" href="{% url 'single_product' product.id %}">{{ product.name|truncatechars:25 }}</a></div>
-                          <div class="text-center"><a class="card-link text-danger impact" href="{% url 'single_product' product.id %}">${{ product.price }}</a></div>
-                        </div>
+                    <div class="swiper-slide text-center">
+                        <a class="card-link" href="{% url 'single_product' product.id %}">
+                            <img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}">
+                            <div class="card-body">
+                              <div class="text-dark font-weight-bold text-center">{{ product.name|truncatechars:25 }}</div>
+                              <div class="text-center text-danger impact">${{ product.price }}</div>
+                            </div>
+                        </a>
                     </div>
                     {% endfor %}
                 </div>
