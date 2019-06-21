@@ -1,7 +1,7 @@
 function delete_from_cart(entry){
-    var $entry = $(entry);
-    var id = $entry.data('id');
-    var quantity = $entry.data('quantity');
+    let $entry = $(entry);
+    let id = $entry.data('id');
+    let quantity = $entry.data('quantity');
     $.ajax({
         url: '/delete_from_cart/'+ id +'/' + quantity +'/',
         method: 'DELETE',
@@ -19,10 +19,10 @@ function delete_from_cart(entry){
     })
 }
 $(function () {
-    var price = $("#price").html();
-    var quantity = $("#quantity span").html();
+    let price = $("#price").html();
+    let quantity = $("#quantity span").html();
     $("#total-price").html("$"+parseInt(price)*parseInt(quantity));
-})
+});
 function buy(){
     $.ajax({
         url: '/cart/buy/',
@@ -33,7 +33,7 @@ function buy(){
         success: function (data) {
             if (data === "Successful"){
                 $.notify(data, "success");
-                $('.card').remove()
+                $('.card').remove();
                 $('#lenCard').text('0');
                 $('.container').load(' .container');
             }

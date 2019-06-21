@@ -1,4 +1,5 @@
 from django.db import models
+import json
 # Create your models here.
 
 
@@ -41,11 +42,16 @@ class Products(models.Model):
     def __str__(self):
         return self.name
 
+    def toJSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__,
+                          sort_keys=True, indent=4)
+
 
 # create table name commerce_category on database
 class Category(models.Model):
     # add columns to this table
     name = models.CharField(max_length=128)
+    #Products=models.ManyToOneRel(Products,to='category')
 
     # edit table name on admin site
     class Meta:

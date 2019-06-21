@@ -18,4 +18,6 @@ urlpatterns = [
     path('404/', views.error_page, name='error_page'),
     path('search/', views.search, name='search'),
     path('category/<category>/', views.single_category, name='single_category'),
+    path('recommender/', views.get_recommender, name='get_recommender'),
+
 ]

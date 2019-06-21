@@ -1,7 +1,7 @@
 function add_to_cart(entry){
-    var $entry = $(entry);
-    var id = $entry.data('id');
-    var quantity = $entry.parent().prev().children("input").val();
+    let $entry = $(entry);
+    let id = $entry.data('id');
+    let quantity = $entry.parent().prev().children("input").val();
     $.ajax({
         url: '/add_to_cart/'+ id +'/' + quantity + "/",
         method: 'POST',
@@ -20,7 +20,7 @@ function add_to_cart(entry){
     });
 }
 $(function () {
-    var swiper = new Swiper('.swiper-container', {
+    new Swiper('.swiper-container', {
       grabCursor: true,
       centeredSlides: true,
       slidesPerView: '5',

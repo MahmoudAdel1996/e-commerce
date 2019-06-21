@@ -15,30 +15,43 @@
     <link rel="stylesheet" href="{% static 'Commerce/css/upperheader.css' %}">
     <link rel="stylesheet" href="{% static 'Commerce/css/swiper.min.css' %}">
 </head>
+
 <body>
 
     {% include "Commerce/upperheader.html" %}
     {% include "Commerce/navbar.html" %}
     <div class="container bg-white main-section">
         <h4 class="p-2">Best Sellers</h4>
-        <div id="mak" class="swiper-container">
+        <div class="swiper-container best-seller-container">
             <div class="swiper-wrapper">
                 {% for product in recommend_product %}
-                <div class="swiper-slide text-center">
-                    <a class="card-link" href="{% url 'single_product' product.id %}">
-                        <img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}">
-                        <div class="card-body">
-                          <div class="text-dark font-weight-bold text-center">{{ product.name|truncatechars:25 }}</div>
-                          <div class="text-center text-danger impact">${{ product.price }}</div>
-                        </div>
-                    </a>
-                </div>
+                    <div class="swiper-slide text-center">
+                        <a class="card-link" href="{% url 'single_product' product.id %}">
+                            <img class="card-img-top" src="{{ product.image.url }}" alt="{{product.name}}">
+                            <div class="card-body">
+                              <div class="text-dark font-weight-bold text-center">{{ product.name|truncatechars:25 }}</div>
+                              <div class="text-center text-danger impact">$ {{ product.price }}</div>
+                            </div>
+                        </a>
+                    </div>
                 {% endfor %}
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+    <br>
+
+    <div class="container bg-white main-section">
+        <h4 class="p-2">Recommended for you</h4>
+        <div class="swiper-container recommend-container">
+            <div id="recommend" class="swiper-wrapper p-2">
+                <div class="spinner-border text-secondary m-auto" role="status">
+                    <span class="text-center sr-only">Loading...</span>
+                </div>
+            </div>
         </div>
     </div>
     <br>
@@ -185,7 +198,7 @@
     <script src="{% static 'Commerce/js/swiper.min.js' %}"></script>
     <script src="{% static 'Commerce/js/home.js' %}"></script>
     <script>
-		    var csrf_token = '{{ csrf_token }}';
+           let csrf_token = '{{ csrf_token }}';
     </script>
 </body>
 </html>

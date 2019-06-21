@@ -2,10 +2,10 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from .models import Products, Category, Users, Invoices
 from django.shortcuts import HttpResponse
-from .recommendation import recommender_2, products_recommender  # , recommender
+from django.core import serializers
+from .recommendation import recommender_2, products_recommender, recommender
 from copy import copy
 
-# from multiprocessing.pool import ThreadPool
 # Create your views here.
 
 # Create variable for cart items
@@ -118,11 +118,6 @@ def home(request):
         # if no user logged in
         user_login = None
     prods = list(Products.objects.all().order_by('id'))
-
-    # pool = ThreadPool(processes=1)
-    # async_result = pool.apply_async(recommender, (user_login.id,))
-    # lis = async_result.get()
-
     lis = recommender_2()
     prolist1 = []
     for i in lis[:10]:
@@ -137,6 +132,21 @@ def home(request):
     }
     # go to home page "localhost:8000/"
     return render(request, 'Commerce/home.html', context=context)
+
+
+def get_recommender(request):
+    if 'username' in request.session:
+        user_login = Users.objects.get(name=request.session.get('username'))
+    else:
+        user_login = None
+    prods = list(Products.objects.all().order_by('id'))
+    lis = recommender(user_login)
+    prolist1 = []
+    for i in lis:
+        prolist1.append(prods[i - 1])
+    json_serializer = serializers.get_serializer("json")()
+    response = json_serializer.serialize(prolist1, ensure_ascii=False, indent=2)
+    return HttpResponse(response, content_type="application/json")
 
 
 # path to single category "localhost:8000/category/[categoryName]/"
@@ -164,10 +174,6 @@ def single_category(request, category):
         user_login = None
 
     prods = list(Products.objects.all().order_by('id'))
-    # if user_login:
-    #     lis = recommender(user_login.id)
-    # else:
-    #     lis = recommender(user_login)
     lis = recommender_2()
     prolist1 = []
     for i in lis[:10]:

@@ -27,6 +27,8 @@ def recommender(user_id, n=10):
 
     if not user_id:
         user_id = 1
+    else:
+        user_id = user_id.id
     reshape_purchases = Sales.pivot(index='customer_id', columns='product_id', values='Total_Quantity')
     users_mean = np.array(reshape_purchases.mean(axis=1))
     r_demeaned = reshape_purchases.sub(reshape_purchases.mean(axis=1), axis=0)
@@ -86,6 +88,6 @@ def products_recommender(products, product_id=1):
 
     # populating the list with the titles of the best 10 matching movies
     for i in top_10_indexes:
-        recommended_movies.append(list(df.index)[i+1]+1)
+        recommended_movies.append(list(df.index)[i]+1)
     print(recommended_movies)
     return recommended_movies
