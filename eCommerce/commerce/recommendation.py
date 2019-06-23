@@ -6,8 +6,7 @@ from rake_nltk import Rake
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# Sales = pd.read_excel('train.xlsx')
-# Products = pd.read_excel('Products.xlsx')
+
 Sales = Invoices.objects.values('customer_id', 'product_id', 'quantity')
 Sales = pd.DataFrame(list(Sales.values()))
 Sales['Total_Quantity'] = Sales.groupby(['customer_id', 'product_id'])['quantity'].transform('sum')

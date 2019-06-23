@@ -5,7 +5,10 @@ from django.shortcuts import HttpResponse
 from django.core import serializers
 from .recommendation import recommender_2, products_recommender, recommender
 from copy import copy
-
+from django.db import connection
+from django.db.models import Sum
+from django.core.validators import validate_email, validate_integer
+from django.core.exceptions import ValidationError
 # Create your views here.
 
 # Create variable for cart items
@@ -63,11 +66,27 @@ def register(request):
         if Users.objects.filter(email=email):
             error = 'Email Already Exist'
             return render(request, 'Commerce/signup.html', {'error1': error})
+        try:
+            validate_email(email)
+        except ValidationError:
+            error = 'Invalid Email'
+            return render(request, 'Commerce/signup.html', {'error1': error})
+        gender = request.POST.get('gender')
+        print(gender)
+        country = request.POST.get('country')
         # get passwords from signup html page
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
+
         # get age from signup html page
         age = request.POST.get('age')
+        try:
+            if int(age) <= 0:
+                error = 'Invalid Age'
+                return render(request, 'Commerce/signup.html', {'error3': error})
+        except ValidationError:
+            error = 'Invalid Age'
+            return render(request, 'Commerce/signup.html', {'error3': error})
         # if passwords are equal
         if password1 == password2:
             # add username to session
@@ -77,7 +96,9 @@ def register(request):
                   name=username,
                   email=email,
                   password=password1,
-                  age=age).save()
+                  age=age,
+                  country=country,
+                  gender=gender).save()
             # go to home page "localhost:8000/"
             return redirect('home')
         else:
@@ -204,7 +225,16 @@ def single_product(request, product_id):
         return render(request, 'commerce/404.html')
 
     # get last 10 invoices that's happened on specific product
-    invoices = Invoices.objects.filter(product_id=product_id)[:10]
+    invoices = Invoices.objects.filter(product_id=product_id)
+    total_quantity = invoices.aggregate(total_quantity=Sum('quantity'))
+    query = """SELECT customer_id, max(date_time) as date_time ,sum(quantity) as total_quantity
+     FROM commerce_invoices
+     where product_id = """+product_id+"""
+     group by(customer_id)
+     order by date_time desc"""
+    cursor = connection.cursor()
+    cursor.execute(query)
+    invoices = cursor.fetchall()
     # if user logged in
     if 'username' in request.session:
         # get this user from database to show him on upperheader html file
@@ -221,10 +251,11 @@ def single_product(request, product_id):
     for i in lis:
         prolist1.append(prods[i-1])
     context = {
+        'total_quantity': total_quantity,
         'recommend_product': prolist1,
         'login': user_login,
         'product': product,
-        'invoices': invoices,
+        'invoices': invoices[:10],
         # get how many products on cart if no products will return length empty list = 0
         'lenCard': len(product_on_cart.get(request.session.get('username'), []))
     }

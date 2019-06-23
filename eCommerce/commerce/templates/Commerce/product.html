@@ -1,4 +1,4 @@
-<!DOCTYPE html>{% load static %}
+<!DOCTYPE html>{% load static %}{% load poll_extras %}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -28,6 +28,7 @@
                     <p class="text-secondary">{{product.description}}</p>
                     <h3 class="text-danger" style="font-family: Impact">${{product.price}}</h3>
                     <button data-toggle="modal" data-target="#exampleModa{{ product.id }}" type="button" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Add To Cart</button>
+                    <p class="text-secondary">Number of pieces sold:  {{ total_quantity.total_quantity }}</p>
                 </div>
             </div>
             <br>
@@ -62,6 +63,8 @@
             <h3 class="text-secondary p-4">Users Buy This Product</h3>
             {% if invoices %}
                 {% for invoice in invoices %}
+                    {% if invoice.2 != 0 %}
+
                     <div class="card mb-3 p-2">
                       <div class="row no-gutters">
                         <div class="col-md-3" style="max-width: 5rem">
@@ -73,18 +76,20 @@
                         </div>
                         <div class="col-md-9">
                           <div class="card-body">
-                            <h5 class="card-title"><a class="card-link text-dark font-weight-bold" href="{% url 'profile' invoice.customer.name %}">{{ invoice.customer.name }}</a></h5>
-                            <small class="text-muted">{{ invoice.customer.email }}</small>
-                              {% if invoice.status == 'Buy' %}
-                              <p class="card-text"><small class="text-success">{{ invoice.status }} {{ invoice.quantity }}</small></p>
+                            <h5 class="card-title"><a class="card-link text-dark font-weight-bold" href="\profile\{% get_name_from_id invoice.0 %}">{% get_name_from_id invoice.0 %}</a></h5>
+                            <small class="text-muted">{% get_email_from_id invoice.0 %}</small>
+                              {% if invoice.2 > -1 %}
+                              <p class="card-text"><small class="text-success">Buy: {{ invoice.2 }}</small></p>
                               {% else %}
-                              <p class="card-text"><small class="text-danger">{{ invoice.status }} {{ invoice.quantity }}</small></p>
+                              <p class="card-text"><small class="text-danger">Return: {{ invoice.2 }}</small></p>
                               {% endif %}
-                            <p class="card-text"><small class="text-muted">{{ invoice.date_time }}</small></p>
+                            <p class="card-text"><small class="text-muted">{{ invoice.1 }}</small></p>
                           </div>
                         </div>
                       </div>
                     </div>
+
+                    {% endif %}
                 {% endfor %}
             {% else %}
                 <p class="text-center p-2 text-secondary">doesn't have any history</p>

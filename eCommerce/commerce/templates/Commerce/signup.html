@@ -14,7 +14,7 @@
 </head>
 <body>
     {% include "Commerce/navbar.html" %}
-    <div class="box">
+    <div class="box m-auto">
         <h2>Register</h2>
         <form action="{% url 'register' %}" method="post">{% csrf_token %}
             <div class="inputBox">
@@ -30,7 +30,7 @@
             </div>
             {% endif %}
             <div class="inputBox">
-                <input id="email" type="email" name="email" value="{{request.POST.email}}" required="">
+                <input id="email" type="text" name="email" value="{{request.POST.email}}" required="">
                 <label for="email">E-mail</label>
             </div>
             {% if error1 %}
@@ -57,9 +57,33 @@
               </button>
             </div>
             {% endif %}
-            <div class="inputBox">
-                <input id="age" type="number" name="age" value="{{request.POST.age}}" required="">
-                <label for="age">Age</label>
+            <div class="form-row">
+                <div class="col">
+                    <div class="inputBox">
+                        <input id="age" type="number" name="age" value="{{request.POST.age}}" required="">
+                        <label for="age">Age</label>
+                    </div>
+                    {% if error3 %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      {{error3}}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col">
+                    <div class="inputBox">
+                        <input id="country" type="text" name="country" value="{{request.POST.country}}" required="">
+                        <label for="country">Country</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <select name="gender" class="form-control">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
             </div>
             <input class="btn btn-primary" type="submit" value="Sign Up">
         </form>

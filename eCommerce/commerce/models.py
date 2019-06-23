@@ -1,5 +1,4 @@
 from django.db import models
-import json
 # Create your models here.
 
 
@@ -9,10 +8,10 @@ class Users(models.Model):
     name = models.CharField(max_length=100)
     password = models.CharField(max_length=128)
     email = models.CharField(max_length=100)
-    gender = models.CharField(max_length=50, null=True)
-    age = models.IntegerField(null=True)
+    gender = models.CharField(default='Male', max_length=50, null=True)
+    age = models.IntegerField(default=20, null=True)
     phone = models.CharField(max_length=15, null=True)
-    country = models.CharField(max_length=100, null=True)
+    country = models.CharField(default='Egypt', max_length=100, null=True)
     show_history = models.BooleanField(default=True)
 
     # edit table name on admin site
@@ -42,18 +41,13 @@ class Products(models.Model):
     def __str__(self):
         return self.name
 
-    def toJSON(self):
-        return json.dumps(self, default=lambda o: o.__dict__,
-                          sort_keys=True, indent=4)
-
 
 # create table name commerce_category on database
 class Category(models.Model):
     # add columns to this table
     name = models.CharField(max_length=128)
-    #Products=models.ManyToOneRel(Products,to='category')
-
     # edit table name on admin site
+
     class Meta:
         verbose_name_plural = "Categories"
 
