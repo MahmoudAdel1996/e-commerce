@@ -1,19 +1,20 @@
 body{
     font-family: sans-serif;
-    background-image: url("../image/bg.jpg");
+    /*background-image: url("../image/bg.jpg");*/
+    background-color: #fafafa;
+
 }
 .box{
     width: 450px;
     padding: 40px;
-    background: rgba(0, 0, 0, .9);
+    background: #fff;
     box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
     border-radius: 10px;
 }
 .box h2{
     margin: 0 0 8px 0;
     padding: 0;
-    color: #fff;
+    color: #FF8B00;
     text-align: center;
 }
 .box .inputBox{
@@ -23,10 +24,9 @@ body{
     width: 100%;
     padding: 5px 2px;
     font-size: 15px;
-    color: #fff;
     margin-bottom: 30px;
     border: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #FF8B00;
     outline: none;
     background: transparent;
     letter-spacing: 1px;
@@ -37,7 +37,7 @@ body{
     left: 0;
     padding: 10px 0;
     font-size: 15px;
-    color: #fff;
+    color: #FF8B00;
     pointer-events: none;
     transition: .5s;
     letter-spacing: 1px;

@@ -14,7 +14,7 @@
 </head>
 <body>
     {% include "Commerce/navbar.html" %}
-    <div class="box m-auto">
+    <div class="box m-auto shadow">
         <h2>Register</h2>
         <form action="{% url 'register' %}" method="post">{% csrf_token %}
             <div class="inputBox">
