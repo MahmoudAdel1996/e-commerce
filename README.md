@@ -19,3 +19,5 @@ $ pg_restore --dbname=ecommerce --verbose backupDB.sql
 |Pillow          |6.0.0
 |psycopg2        |2.8.2
 |scipy           |1.3.0
+|sklearn         |0.0
+|rake-nltk       |1.0.4
