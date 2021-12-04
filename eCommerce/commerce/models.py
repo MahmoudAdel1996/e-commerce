@@ -1,4 +1,6 @@
 from django.db import models
+from datetime import datetime
+
 # Create your models here.
 
 
@@ -17,6 +19,21 @@ class Users(models.Model):
     # edit table name on admin site
     class Meta:
         verbose_name_plural = "Users"
+
+    # show string format on admin site inside the table
+    def __str__(self):
+        return self.name
+
+
+# create table name commerce_category on database
+class Category(models.Model):
+    # add columns to this table
+    name = models.CharField(max_length=128)
+
+    # edit table name on admin site
+
+    class Meta:
+        verbose_name_plural = "Categories"
 
     # show string format on admin site inside the table
     def __str__(self):
@@ -42,18 +59,21 @@ class Products(models.Model):
         return self.name
 
 
-# create table name commerce_category on database
-class Category(models.Model):
+# create table name commerce_products on database
+class Comment(models.Model):
     # add columns to this table
-    name = models.CharField(max_length=128)
-    # edit table name on admin site
+    created_by = models.ForeignKey('Users', on_delete=models.CASCADE)
+    comment = models.TextField()
+    product = models.ForeignKey('Products', on_delete=models.CASCADE)
+    created_date = models.DateTimeField(default=datetime.now())
 
+    # edit table name on admin site
     class Meta:
-        verbose_name_plural = "Categories"
+        verbose_name_plural = "Comments"
 
     # show string format on admin site inside the table
     def __str__(self):
-        return self.name
+        return self.comment
 
 
 # create table name commerce_invoices on database

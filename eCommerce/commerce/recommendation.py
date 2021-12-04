@@ -23,7 +23,6 @@ def recommender_2():
 
 
 def recommender(user_id, n=10):
-
     if not user_id:
         user_id = 1
     else:

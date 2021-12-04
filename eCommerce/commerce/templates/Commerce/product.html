@@ -29,6 +29,8 @@
                     <h3 class="text-danger" style="font-family: Impact">${{product.price}}</h3>
                     <button data-toggle="modal" data-target="#exampleModa{{ product.id }}" type="button" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Add To Cart</button>
                     <p class="text-secondary">Number of pieces sold:  {{ total_quantity.total_quantity }}</p>
+                    <p class="text-secondary">Likes:  {{ likes }}</p>
+
                 </div>
             </div>
             <br>
@@ -36,7 +38,7 @@
         </div>
 
         <div class="container bg-white main-section">
-            <h4 class="p-2">Similar Products</h4>
+            <h4 class="py-2">Similar Products</h4>
             <div id="mak" class="swiper-container">
                 <div class="swiper-wrapper">
                     {% for product in recommend_product %}
@@ -60,7 +62,47 @@
         <br>
 
         <div class="container">
-            <h3 class="text-secondary p-4">Users Buy This Product</h3>
+            <h3 class="text-secondary py-4">Comments</h3>
+            <div class="container">
+                <form action="">
+                    <div class="form-group">
+                        <label for="comment">Add Comment</label>
+                        <textarea class="form-control" id="comment" rows="3"></textarea>
+                        <button type="button" onclick="add_comment()" class="btn btn-success my-2">Add</button>
+                    </div>
+                </form>
+            </div>
+            {% if comments %}
+                {% for comment in comments %}
+
+                    <div class="card mb-3 p-2">
+                      <div class="row no-gutters">
+                        <div class="col-md-3" style="max-width: 5rem">
+                            {% if comment.created_by.gender == 'Female' %}
+                                <img src="{% static 'Commerce/image/female_icon.png' %}" class="card-img" alt="{{ comment.created_by.name }}">
+                            {% else %}
+                                <img src="{% static 'Commerce/image/User-icon.png' %}" class="card-img" alt="{{ comment.created_by.name }}">
+                            {% endif %}
+                        </div>
+                        <div class="col-md-9">
+                          <div class="card-body">
+                            <h5 class="card-title"><a class="card-link text-dark font-weight-bold" href="\profile\{{ comment.created_by.name }}">{{ comment.created_by.name }}</a></h5>
+                            <small class="text-muted">{{ comment.created_date }}</small>
+                            <p>{{comment.comment}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-center p-2 text-secondary">doesn't have Comments</p>
+            {% endif %}
+        </div>
+    </div>
+
+
+        <div class="container">
+            <h3 class="text-secondary py-4">Users Buy This Product</h3>
             {% if invoices %}
                 {% for invoice in invoices %}
                     {% if invoice.2 != 0 %}

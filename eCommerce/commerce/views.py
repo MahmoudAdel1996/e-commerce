@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
-from .models import Products, Category, Users, Invoices
+from .models import Products, Category, Users, Invoices, Comment
 from django.shortcuts import HttpResponse
 from django.core import serializers
 from .recommendation import recommender_2, products_recommender, recommender
@@ -140,11 +140,11 @@ def home(request):
         user_login = None
     prods = list(Products.objects.all().order_by('id'))
     lis = recommender_2()
-    prolist1 = []
+    pro_list1 = []
     for i in lis[:10]:
-        prolist1.append(prods[i - 1])
+        pro_list1.append(prods[i - 1])
     context = {
-        'recommend_product': prolist1,
+        'recommend_product': pro_list1,
         'login': user_login,
         'products': products,
         'category': categories,
@@ -162,11 +162,11 @@ def get_recommender(request):
         user_login = None
     prods = list(Products.objects.all().order_by('id'))
     lis = recommender(user_login)
-    prolist1 = []
+    pro_list1 = []
     for i in lis:
-        prolist1.append(prods[i - 1])
+        pro_list1.append(prods[i - 1])
     json_serializer = serializers.get_serializer("json")()
-    response = json_serializer.serialize(prolist1, ensure_ascii=False, indent=2)
+    response = json_serializer.serialize(pro_list1, ensure_ascii=False, indent=2)
     return HttpResponse(response, content_type="application/json")
 
 
@@ -196,11 +196,11 @@ def single_category(request, category):
 
     prods = list(Products.objects.all().order_by('id'))
     lis = recommender_2()
-    prolist1 = []
+    pro_list1 = []
     for i in lis[:10]:
-        prolist1.append(prods[i - 1])
+        pro_list1.append(prods[i - 1])
     context = {
-        'recommend_product': prolist1,
+        'recommend_product': pro_list1,
         'login': user_login,
         'products': products,
         'items': x,
@@ -219,6 +219,7 @@ def single_product(request, product_id):
     try:
         # get specific product from database
         product = prods.get(id=product_id)
+        comments = Comment.objects.filter(product_id=product_id)
     except Products.DoesNotExist:
         return render(request, 'commerce/404.html')
     except ValueError:
@@ -247,12 +248,14 @@ def single_product(request, product_id):
     for idx, val in enumerate(prods):
         map_id[val.id] = idx
     lis = products_recommender(prods, map_id.get(product.id))
-    prolist1 = []
+    pro_list1 = []
     for i in lis:
-        prolist1.append(prods[i-1])
+        pro_list1.append(prods[i-1])
     context = {
         'total_quantity': total_quantity,
-        'recommend_product': prolist1,
+        'recommend_product': pro_list1,
+        'comments': comments,
+        'likes': 60,
         'login': user_login,
         'product': product,
         'invoices': invoices[:10],
@@ -290,12 +293,12 @@ def search(request):
     # else:
     #     lis = recommender(user_login)
     lis = recommender_2()
-    prolist1 = []
+    pro_list1 = []
     for i in lis[:10]:
-        prolist1.append(prods[i - 1])
+        pro_list1.append(prods[i - 1])
 
     context = {
-        'recommend_product': prolist1,
+        'recommend_product': pro_list1,
         'login': user_login,
         'products': products,
         'category': categories,
@@ -366,7 +369,7 @@ def add_to_cart(request, product_id, quantity):
             # return to Ajax function how many products on cart to show them on html pages
             return HttpResponse(len(product_on_cart[request.session.get('username')]))
         else:
-            # if user not logged in will return 'login' string to Ajax function to handel it to show alert
+            # if user not logged in will return 'login' string to Ajax function to handle it to show alert
             return HttpResponse('login')
     else:
         # if request method not POST show error page "localhost:8000/404/"
@@ -398,7 +401,7 @@ def delete_from_cart(request, product_id, quantity):
             # return to Ajax function how many products on cart to show them on html pages
             return HttpResponse(len(product_on_cart[request.session.get('username')]))
         else:
-            # if user not logged in will return 'login' string to Ajax function to handel it to show alert
+            # if user not logged in will return 'login' string to Ajax function to handle it to show alert
             return HttpResponse('login')
     else:
         # if request method not DELETE show error page "localhost:8000/404/"

@@ -1,7 +1,7 @@
 # e-commerce
 
 ## install DataBase for linux
-using postgres after clone the project do this things to restore database in your computer.  
+using postgres after clone the project do these things to restore database in your computer.  
 ```sql	
 CREATE DATABASE ecommerce;
 ```  
@@ -9,7 +9,7 @@ CREATE DATABASE ecommerce;
 ```bash
 $ pg_restore --dbname=ecommerce --verbose backupDB.sql
 ```
-## Required Pakages
+## Required Packages
 
 |Package         |Version
 |--------------- |-------
@@ -19,3 +19,5 @@ $ pg_restore --dbname=ecommerce --verbose backupDB.sql
 |Pillow          |6.0.0
 |psycopg2        |2.8.2
 |scipy           |1.3.0
+|rake_nltk       |.....
+|sklearn         |.....
