@@ -1,5 +1,5 @@
 .idea
-ecommerce-env
+venv
 eCommerce/.idea
 eCommerce/__pycache__
 eCommerce/commerce/__pycache__
