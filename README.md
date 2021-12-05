@@ -1,5 +1,7 @@
 # e-commerce
 
+postgres version `PostgreSQL 10.7, compiled by Visual C++ build 1800, 64-bit`
+
 ## install DataBase for linux
 using postgres after clone the project do these things to restore database in your computer.  
 ```sql	
@@ -21,3 +23,4 @@ $ pg_restore --dbname=ecommerce --verbose backupDB.sql
 |scipy           |1.3.0
 |rake_nltk       |.....
 |sklearn         |.....
+|rake-nltk       |1.0.4
